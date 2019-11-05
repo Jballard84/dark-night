@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Workspace01\Design01\Design01.cydwr">
+<ExpandedNodeIds>
+<v>Workspace01</v>
+<v>Workspace01\Design01</v>
+<v>Workspace01\Design01\TopDesign</v>
+<v>Workspace01\Design01\Header Files</v>
+<v>Workspace01\Design01\Source Files</v>
+<v>Workspace01\Design01\Generated_Source</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\ADC_DelSig_1</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\Cam_signal</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\Cold_Advance</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\isr_CKP_counter</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\isr_Not_Runing</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\mass_air</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\PWM_1_FANCONTROLLER</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\Temp_Checker</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\Thermistor_1</v>
+<v>Workspace01\Design01\Generated_Source\PSoC5\Thermoster_Vss</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Workspace01</v>
+<v>Workspace01\Design01</v>
+<v>Workspace01\Design01\TopDesign</v>
+<v>Workspace01\Design01\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Workspace01</v>
+<v>Workspace01\Design01</v>
+<v>Workspace01\Design01\CortexM3</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_DelSig_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_DelSig_1_Ext_CP_Clk.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_DelSig_1_INT.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_DelSig_1_IRQ.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_DelSig_1_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_DelSig_1_theACLK.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\AMux_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Battery_interlock.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_Output.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal_BuffAmp.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal_BuffAmp_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal_VDAC8.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal_VDAC8_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal_Wave1_DMA_dma.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cam_signal_Wave2_DMA_dma.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cold_Advance.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_2.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_2_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Input_Diesel.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Output_ecm.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal_BuffAmp.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal_BuffAmp_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal_VDAC8.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal_VDAC8_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal_Wave1_DMA_dma.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Crank_Signal_Wave2_DMA_dma.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Fan_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\fancontroller.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Glow_plug_indicator.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Glow_Plug_pin.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\glowplugcontroller.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_CKP_counter.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_Not_Runing.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\mass_air.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Mass_Air_Voltage_Output.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\MASS_AIRFLOW.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\MASS_AIRFLOW_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\measurement.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Opamp_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Opamp_1_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_1_FANCONTROLLER.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_1_FANCONTROLLER_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\removeOffsetNoise.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Rref_and_thermistor_between.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Rref10Kpin1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Spare_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Spare_2.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Temp_Checker.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Thermistor_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Thermoster_Vss.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_1_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\timer_clock.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_Sytem.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_Sytem_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\VDAC8_1.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\VDAC8_1_PM.lst</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Design01.elf</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Design01.hex</v>
+<v>Workspace01\Design01\CortexM3\ARM_GCC_541\Debug\Design01.map</v>
+<v>Workspace01\Design01\Design01.gpdsc</v>
+<v>Workspace01\Design01\Design01.rpt</v>
+<v>Workspace01\Design01\Design01_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Workspace01</v>
+<v>Workspace01\Design01</v>
+<v>Workspace01\Design01\PSoC 5LP Architecture TRM</v>
+<v>Workspace01\Design01\CY8C58LP Family Datasheet</v>
+<v>Workspace01\Design01\System Reference Guides</v>
+<v>Workspace01\Design01\System Reference Guides\cy_boot_v5_60</v>
+<v>Workspace01\Design01\ADC_DelSig_v3_30.pdf</v>
+<v>Workspace01\Design01\AMux_v1_80.pdf</v>
+<v>Workspace01\Design01\and_v1_0.pdf</v>
+<v>Workspace01\Design01\cy_clock_v2_20</v>
+<v>Workspace01\Design01\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>Workspace01\Design01\cy_constant_v1_0</v>
+<v>Workspace01\Design01\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>Workspace01\Design01\cy_isr_v1_70</v>
+<v>Workspace01\Design01\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>Workspace01\Design01\cy_pins_v2_20</v>
+<v>Workspace01\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Workspace01\Design01\cy_tff_v1_0.pdf</v>
+<v>Workspace01\Design01\CyControlReg_v1_80</v>
+<v>Workspace01\Design01\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>Workspace01\Design01\GlitchFilter_v2_0.pdf</v>
+<v>Workspace01\Design01\Gnd_v1_0.pdf</v>
+<v>Workspace01\Design01\OpAmp_v1_90.pdf</v>
+<v>Workspace01\Design01\PWM_v3_30.pdf</v>
+<v>Workspace01\Design01\Resistor_v1_0.pdf</v>
+<v>Workspace01\Design01\Thermistor_v1_0.pdf</v>
+<v>Workspace01\Design01\ThermistorCalc_v1_20.pdf</v>
+<v>Workspace01\Design01\Timer_v2_80</v>
+<v>Workspace01\Design01\Timer_v2_80\Timer_v2_80.pdf</v>
+<v>Workspace01\Design01\VDAC8_v1_90</v>
+<v>Workspace01\Design01\VDAC8_v1_90\VDAC8_v1_90.pdf</v>
+<v>Workspace01\Design01\WaveDAC8_v2_10</v>
+<v>Workspace01\Design01\WaveDAC8_v2_10\WaveDAC8_v2_10.pdf</v>
+<v>Workspace01\Design01\ZeroTerminal.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Design01.cydsn\main.c" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC5\mass_air.c" />
+<name v=".\Design01.cydsn\glowplugcontroller.h" />
+<name v=".\Design01.cydsn\glowplugcontroller.c" />
+<name v=".\Design01.cydsn\Design01.cydwr" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC5\isr_CKP_counter.c" />
+<name v=".\Design01.cydsn\macros.h" />
+<name v=".\Design01.cydsn\fancontroller.c" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC5\Temp_Checker.c" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC5\isr_Not_Runing.c" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC5\CyBootAsmGnu.s" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC5\ADC_DelSig_1.c" />
+<name v=".\Design01.cydsn\fancontroller.h" />
+<name v=".\Design01.cydsn\measurement.h" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC5\Cam_signal.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1318, 711" SelectedTabbedMdiWindow="b570292b-020e-4c75-a8e1-875cc4b9e181"><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="dc126c80-96c8-47dd-a5a5-e190e0a037f9" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\main.c" Guid="02e0b57e-4496-4268-ad69-b50bf02f0289" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Generated_Source\PSoC5\mass_air.c" Guid="b570292b-020e-4c75-a8e1-875cc4b9e181" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\glowplugcontroller.h" Guid="8052b3af-be3a-4815-ba17-05313285ae9a" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\glowplugcontroller.c" Guid="f84f08fe-95bb-44a7-a291-e4a128dd551d" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Design01.cydwr" Guid="e1cab689-31a9-45be-a934-8a8a8c911450" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Generated_Source\PSoC5\isr_CKP_counter.c" Guid="b1fa6921-b7e9-4034-8e8e-69a2d4a5dd43" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\macros.h" Guid="3aba7505-969a-4721-891e-ddd249ad7118" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\fancontroller.c" Guid="ded7da6e-b4f1-439f-953b-506d9411fe23" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Generated_Source\PSoC5\Temp_Checker.c" Guid="2f8d9344-55d0-4b35-8911-b018f7d22f57" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Generated_Source\PSoC5\isr_Not_Runing.c" Guid="25adfd66-9c72-4d97-b677-0a4cf9466ef2" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Generated_Source\PSoC5\CyBootAsmGnu.s" Guid="c5ab8ffe-9914-411b-9d69-faa0b1045189" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Generated_Source\PSoC5\ADC_DelSig_1.c" Guid="cd012fcf-34e1-4562-a855-54538c31888c" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="f205bc85-b510-4751-887a-0c61827861e9" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\fancontroller.h" Guid="346e9e50-630f-49de-bae0-4fd70bdf9774" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\measurement.h" Guid="879583eb-df34-4ebb-8c72-fdd41ee48c93" /><DocumentWindow Key="C:\Users\Joshua\Documents\PSoC Creator\Workspace01\Design01.cydsn\Generated_Source\PSoC5\Cam_signal.c" Guid="692632d1-d79e-439b-8862-0e91265e9a47" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

@@ -1,0 +1,1964 @@
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Check_Temp.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Check_Temp_Interrupt,"ax",%progbits
+  20              		.align	2
+  21              		.global	Check_Temp_Interrupt
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Check_Temp_Interrupt, %function
+  25              	Check_Temp_Interrupt:
+  26              	.LFB67:
+  27              		.file 1 "Generated_Source\\PSoC5\\Check_Temp.c"
+   1:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Check_Temp.c **** * File Name: Check_Temp.c  
+   3:Generated_Source\PSoC5/Check_Temp.c **** * Version 1.70
+   4:Generated_Source\PSoC5/Check_Temp.c **** *
+   5:Generated_Source\PSoC5/Check_Temp.c **** *  Description:
+   6:Generated_Source\PSoC5/Check_Temp.c **** *   API for controlling the state of an interrupt.
+   7:Generated_Source\PSoC5/Check_Temp.c **** *
+   8:Generated_Source\PSoC5/Check_Temp.c **** *
+   9:Generated_Source\PSoC5/Check_Temp.c **** *  Note:
+  10:Generated_Source\PSoC5/Check_Temp.c **** *
+  11:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/Check_Temp.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/Check_Temp.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC5/Check_Temp.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC5/Check_Temp.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/Check_Temp.c **** 
+  18:Generated_Source\PSoC5/Check_Temp.c **** 
+  19:Generated_Source\PSoC5/Check_Temp.c **** #include <cydevice_trm.h>
+  20:Generated_Source\PSoC5/Check_Temp.c **** #include <CyLib.h>
+  21:Generated_Source\PSoC5/Check_Temp.c **** #include <Check_Temp.h>
+  22:Generated_Source\PSoC5/Check_Temp.c **** #include "cyapicallbacks.h"
+  23:Generated_Source\PSoC5/Check_Temp.c **** 
+  24:Generated_Source\PSoC5/Check_Temp.c **** #if !defined(Check_Temp__REMOVED) /* Check for removal by optimization */
+  25:Generated_Source\PSoC5/Check_Temp.c **** 
+  26:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+  27:Generated_Source\PSoC5/Check_Temp.c **** *  Place your includes, defines and code here 
+  28:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************/
+  29:Generated_Source\PSoC5/Check_Temp.c **** /* `#START Check_Temp_intc` */
+  30:Generated_Source\PSoC5/Check_Temp.c **** #include <macros.h>
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 2
+
+
+  31:Generated_Source\PSoC5/Check_Temp.c **** /* `#END` */
+  32:Generated_Source\PSoC5/Check_Temp.c **** 
+  33:Generated_Source\PSoC5/Check_Temp.c **** #ifndef CYINT_IRQ_BASE
+  34:Generated_Source\PSoC5/Check_Temp.c **** #define CYINT_IRQ_BASE      16
+  35:Generated_Source\PSoC5/Check_Temp.c **** #endif /* CYINT_IRQ_BASE */
+  36:Generated_Source\PSoC5/Check_Temp.c **** #ifndef CYINT_VECT_TABLE
+  37:Generated_Source\PSoC5/Check_Temp.c **** #define CYINT_VECT_TABLE    ((cyisraddress **) CYREG_NVIC_VECT_OFFSET)
+  38:Generated_Source\PSoC5/Check_Temp.c **** #endif /* CYINT_VECT_TABLE */
+  39:Generated_Source\PSoC5/Check_Temp.c **** 
+  40:Generated_Source\PSoC5/Check_Temp.c **** /* Declared in startup, used to set unused interrupts to. */
+  41:Generated_Source\PSoC5/Check_Temp.c **** CY_ISR_PROTO(IntDefaultHandler);
+  42:Generated_Source\PSoC5/Check_Temp.c **** 
+  43:Generated_Source\PSoC5/Check_Temp.c **** 
+  44:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+  45:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_Start
+  46:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+  47:Generated_Source\PSoC5/Check_Temp.c **** *
+  48:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+  49:Generated_Source\PSoC5/Check_Temp.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  50:Generated_Source\PSoC5/Check_Temp.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  51:Generated_Source\PSoC5/Check_Temp.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  52:Generated_Source\PSoC5/Check_Temp.c **** *  interrupt controller.
+  53:Generated_Source\PSoC5/Check_Temp.c **** *
+  54:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:  
+  55:Generated_Source\PSoC5/Check_Temp.c **** *   None
+  56:Generated_Source\PSoC5/Check_Temp.c **** *
+  57:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+  58:Generated_Source\PSoC5/Check_Temp.c **** *   None
+  59:Generated_Source\PSoC5/Check_Temp.c **** *
+  60:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+  61:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_Start(void)
+  62:Generated_Source\PSoC5/Check_Temp.c **** {
+  63:Generated_Source\PSoC5/Check_Temp.c ****     /* For all we know the interrupt is active. */
+  64:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_Disable();
+  65:Generated_Source\PSoC5/Check_Temp.c **** 
+  66:Generated_Source\PSoC5/Check_Temp.c ****     /* Set the ISR to point to the Check_Temp Interrupt. */
+  67:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_SetVector(&Check_Temp_Interrupt);
+  68:Generated_Source\PSoC5/Check_Temp.c **** 
+  69:Generated_Source\PSoC5/Check_Temp.c ****     /* Set the priority. */
+  70:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_SetPriority((uint8)Check_Temp_INTC_PRIOR_NUMBER);
+  71:Generated_Source\PSoC5/Check_Temp.c **** 
+  72:Generated_Source\PSoC5/Check_Temp.c ****     /* Enable it. */
+  73:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_Enable();
+  74:Generated_Source\PSoC5/Check_Temp.c **** }
+  75:Generated_Source\PSoC5/Check_Temp.c **** 
+  76:Generated_Source\PSoC5/Check_Temp.c **** 
+  77:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+  78:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_StartEx
+  79:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+  80:Generated_Source\PSoC5/Check_Temp.c **** *
+  81:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+  82:Generated_Source\PSoC5/Check_Temp.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  83:Generated_Source\PSoC5/Check_Temp.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  84:Generated_Source\PSoC5/Check_Temp.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  85:Generated_Source\PSoC5/Check_Temp.c **** *  the interrupt to the interrupt controller.
+  86:Generated_Source\PSoC5/Check_Temp.c **** *  
+  87:Generated_Source\PSoC5/Check_Temp.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 3
+
+
+  88:Generated_Source\PSoC5/Check_Temp.c **** *  used to provide consistent definition across compilers:
+  89:Generated_Source\PSoC5/Check_Temp.c **** *  
+  90:Generated_Source\PSoC5/Check_Temp.c **** *  Function definition example:
+  91:Generated_Source\PSoC5/Check_Temp.c **** *   CY_ISR(MyISR)
+  92:Generated_Source\PSoC5/Check_Temp.c **** *   {
+  93:Generated_Source\PSoC5/Check_Temp.c **** *   }
+  94:Generated_Source\PSoC5/Check_Temp.c **** *   Function prototype example:
+  95:Generated_Source\PSoC5/Check_Temp.c **** *   CY_ISR_PROTO(MyISR);
+  96:Generated_Source\PSoC5/Check_Temp.c **** *
+  97:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:  
+  98:Generated_Source\PSoC5/Check_Temp.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  99:Generated_Source\PSoC5/Check_Temp.c **** *
+ 100:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 101:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 102:Generated_Source\PSoC5/Check_Temp.c **** *
+ 103:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 104:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_StartEx(cyisraddress address)
+ 105:Generated_Source\PSoC5/Check_Temp.c **** {
+ 106:Generated_Source\PSoC5/Check_Temp.c ****     /* For all we know the interrupt is active. */
+ 107:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_Disable();
+ 108:Generated_Source\PSoC5/Check_Temp.c **** 
+ 109:Generated_Source\PSoC5/Check_Temp.c ****     /* Set the ISR to point to the Check_Temp Interrupt. */
+ 110:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_SetVector(address);
+ 111:Generated_Source\PSoC5/Check_Temp.c **** 
+ 112:Generated_Source\PSoC5/Check_Temp.c ****     /* Set the priority. */
+ 113:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_SetPriority((uint8)Check_Temp_INTC_PRIOR_NUMBER);
+ 114:Generated_Source\PSoC5/Check_Temp.c **** 
+ 115:Generated_Source\PSoC5/Check_Temp.c ****     /* Enable it. */
+ 116:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_Enable();
+ 117:Generated_Source\PSoC5/Check_Temp.c **** }
+ 118:Generated_Source\PSoC5/Check_Temp.c **** 
+ 119:Generated_Source\PSoC5/Check_Temp.c **** 
+ 120:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 121:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_Stop
+ 122:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 123:Generated_Source\PSoC5/Check_Temp.c **** *
+ 124:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 125:Generated_Source\PSoC5/Check_Temp.c **** *   Disables and removes the interrupt.
+ 126:Generated_Source\PSoC5/Check_Temp.c **** *
+ 127:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:  
+ 128:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 129:Generated_Source\PSoC5/Check_Temp.c **** *
+ 130:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 131:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 132:Generated_Source\PSoC5/Check_Temp.c **** *
+ 133:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 134:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_Stop(void)
+ 135:Generated_Source\PSoC5/Check_Temp.c **** {
+ 136:Generated_Source\PSoC5/Check_Temp.c ****     /* Disable this interrupt. */
+ 137:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_Disable();
+ 138:Generated_Source\PSoC5/Check_Temp.c **** 
+ 139:Generated_Source\PSoC5/Check_Temp.c ****     /* Set the ISR to point to the passive one. */
+ 140:Generated_Source\PSoC5/Check_Temp.c ****     Check_Temp_SetVector(&IntDefaultHandler);
+ 141:Generated_Source\PSoC5/Check_Temp.c **** }
+ 142:Generated_Source\PSoC5/Check_Temp.c **** 
+ 143:Generated_Source\PSoC5/Check_Temp.c **** 
+ 144:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 4
+
+
+ 145:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_Interrupt
+ 146:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 147:Generated_Source\PSoC5/Check_Temp.c **** *
+ 148:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 149:Generated_Source\PSoC5/Check_Temp.c **** *   The default Interrupt Service Routine for Check_Temp.
+ 150:Generated_Source\PSoC5/Check_Temp.c **** *
+ 151:Generated_Source\PSoC5/Check_Temp.c **** *   Add custom code between the coments to keep the next version of this file
+ 152:Generated_Source\PSoC5/Check_Temp.c **** *   from over writting your code.
+ 153:Generated_Source\PSoC5/Check_Temp.c **** *
+ 154:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:  
+ 155:Generated_Source\PSoC5/Check_Temp.c **** *
+ 156:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 157:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 158:Generated_Source\PSoC5/Check_Temp.c **** *
+ 159:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 160:Generated_Source\PSoC5/Check_Temp.c **** CY_ISR(Check_Temp_Interrupt)
+ 161:Generated_Source\PSoC5/Check_Temp.c **** {
+  28              		.loc 1 161 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 7047     		bx	lr
+  34              		.cfi_endproc
+  35              	.LFE67:
+  36              		.size	Check_Temp_Interrupt, .-Check_Temp_Interrupt
+  37 0002 00BF     		.section	.text.Check_Temp_SetVector,"ax",%progbits
+  38              		.align	2
+  39              		.global	Check_Temp_SetVector
+  40              		.thumb
+  41              		.thumb_func
+  42              		.type	Check_Temp_SetVector, %function
+  43              	Check_Temp_SetVector:
+  44              	.LFB68:
+ 162:Generated_Source\PSoC5/Check_Temp.c ****     #ifdef Check_Temp_INTERRUPT_INTERRUPT_CALLBACK
+ 163:Generated_Source\PSoC5/Check_Temp.c ****         Check_Temp_Interrupt_InterruptCallback();
+ 164:Generated_Source\PSoC5/Check_Temp.c ****     #endif /* Check_Temp_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 165:Generated_Source\PSoC5/Check_Temp.c **** 
+ 166:Generated_Source\PSoC5/Check_Temp.c ****     /*  Place your Interrupt code here. */
+ 167:Generated_Source\PSoC5/Check_Temp.c ****     /* `#START Check_Temp_Interrupt` */
+ 168:Generated_Source\PSoC5/Check_Temp.c ****     if(Not_Runing==0){
+ 169:Generated_Source\PSoC5/Check_Temp.c ****     GetTemp();
+ 170:Generated_Source\PSoC5/Check_Temp.c ****     }
+ 171:Generated_Source\PSoC5/Check_Temp.c ****     
+ 172:Generated_Source\PSoC5/Check_Temp.c ****     /* `#END` */
+ 173:Generated_Source\PSoC5/Check_Temp.c **** }
+ 174:Generated_Source\PSoC5/Check_Temp.c **** 
+ 175:Generated_Source\PSoC5/Check_Temp.c **** 
+ 176:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 177:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_SetVector
+ 178:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 179:Generated_Source\PSoC5/Check_Temp.c **** *
+ 180:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 181:Generated_Source\PSoC5/Check_Temp.c **** *   Change the ISR vector for the Interrupt. Note calling Check_Temp_Start
+ 182:Generated_Source\PSoC5/Check_Temp.c **** *   will override any effect this method would have had. To set the vector 
+ 183:Generated_Source\PSoC5/Check_Temp.c **** *   before the component has been started use Check_Temp_StartEx instead.
+ 184:Generated_Source\PSoC5/Check_Temp.c **** * 
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 5
+
+
+ 185:Generated_Source\PSoC5/Check_Temp.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 186:Generated_Source\PSoC5/Check_Temp.c **** *   used to provide consistent definition across compilers:
+ 187:Generated_Source\PSoC5/Check_Temp.c **** *
+ 188:Generated_Source\PSoC5/Check_Temp.c **** *   Function definition example:
+ 189:Generated_Source\PSoC5/Check_Temp.c **** *   CY_ISR(MyISR)
+ 190:Generated_Source\PSoC5/Check_Temp.c **** *   {
+ 191:Generated_Source\PSoC5/Check_Temp.c **** *   }
+ 192:Generated_Source\PSoC5/Check_Temp.c **** *
+ 193:Generated_Source\PSoC5/Check_Temp.c **** *   Function prototype example:
+ 194:Generated_Source\PSoC5/Check_Temp.c **** *     CY_ISR_PROTO(MyISR);
+ 195:Generated_Source\PSoC5/Check_Temp.c **** *
+ 196:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 197:Generated_Source\PSoC5/Check_Temp.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 198:Generated_Source\PSoC5/Check_Temp.c **** *
+ 199:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 200:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 201:Generated_Source\PSoC5/Check_Temp.c **** *
+ 202:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 203:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_SetVector(cyisraddress address)
+ 204:Generated_Source\PSoC5/Check_Temp.c **** {
+  45              		.loc 1 204 0
+  46              		.cfi_startproc
+  47              		@ args = 0, pretend = 0, frame = 0
+  48              		@ frame_needed = 0, uses_anonymous_args = 0
+  49              		@ link register save eliminated.
+  50              	.LVL0:
+ 205:Generated_Source\PSoC5/Check_Temp.c ****     cyisraddress * ramVectorTable;
+ 206:Generated_Source\PSoC5/Check_Temp.c **** 
+ 207:Generated_Source\PSoC5/Check_Temp.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+  51              		.loc 1 207 0
+  52 0000 014B     		ldr	r3, .L3
+  53 0002 1B68     		ldr	r3, [r3]
+  54              	.LVL1:
+ 208:Generated_Source\PSoC5/Check_Temp.c **** 
+ 209:Generated_Source\PSoC5/Check_Temp.c ****     ramVectorTable[CYINT_IRQ_BASE + (uint32)Check_Temp__INTC_NUMBER] = address;
+  55              		.loc 1 209 0
+  56 0004 1864     		str	r0, [r3, #64]
+  57 0006 7047     		bx	lr
+  58              	.L4:
+  59              		.align	2
+  60              	.L3:
+  61 0008 08ED00E0 		.word	-536810232
+  62              		.cfi_endproc
+  63              	.LFE68:
+  64              		.size	Check_Temp_SetVector, .-Check_Temp_SetVector
+  65              		.section	.text.Check_Temp_GetVector,"ax",%progbits
+  66              		.align	2
+  67              		.global	Check_Temp_GetVector
+  68              		.thumb
+  69              		.thumb_func
+  70              		.type	Check_Temp_GetVector, %function
+  71              	Check_Temp_GetVector:
+  72              	.LFB69:
+ 210:Generated_Source\PSoC5/Check_Temp.c **** }
+ 211:Generated_Source\PSoC5/Check_Temp.c **** 
+ 212:Generated_Source\PSoC5/Check_Temp.c **** 
+ 213:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 6
+
+
+ 214:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_GetVector
+ 215:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 216:Generated_Source\PSoC5/Check_Temp.c **** *
+ 217:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 218:Generated_Source\PSoC5/Check_Temp.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 219:Generated_Source\PSoC5/Check_Temp.c **** *
+ 220:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 221:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 222:Generated_Source\PSoC5/Check_Temp.c **** *
+ 223:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 224:Generated_Source\PSoC5/Check_Temp.c **** *   Address of the ISR in the interrupt vector table.
+ 225:Generated_Source\PSoC5/Check_Temp.c **** *
+ 226:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 227:Generated_Source\PSoC5/Check_Temp.c **** cyisraddress Check_Temp_GetVector(void)
+ 228:Generated_Source\PSoC5/Check_Temp.c **** {
+  73              		.loc 1 228 0
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77              		@ link register save eliminated.
+ 229:Generated_Source\PSoC5/Check_Temp.c ****     cyisraddress * ramVectorTable;
+ 230:Generated_Source\PSoC5/Check_Temp.c **** 
+ 231:Generated_Source\PSoC5/Check_Temp.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+  78              		.loc 1 231 0
+  79 0000 014B     		ldr	r3, .L6
+  80 0002 1B68     		ldr	r3, [r3]
+  81              	.LVL2:
+ 232:Generated_Source\PSoC5/Check_Temp.c **** 
+ 233:Generated_Source\PSoC5/Check_Temp.c ****     return ramVectorTable[CYINT_IRQ_BASE + (uint32)Check_Temp__INTC_NUMBER];
+ 234:Generated_Source\PSoC5/Check_Temp.c **** }
+  82              		.loc 1 234 0
+  83 0004 186C     		ldr	r0, [r3, #64]
+  84 0006 7047     		bx	lr
+  85              	.L7:
+  86              		.align	2
+  87              	.L6:
+  88 0008 08ED00E0 		.word	-536810232
+  89              		.cfi_endproc
+  90              	.LFE69:
+  91              		.size	Check_Temp_GetVector, .-Check_Temp_GetVector
+  92              		.section	.text.Check_Temp_SetPriority,"ax",%progbits
+  93              		.align	2
+  94              		.global	Check_Temp_SetPriority
+  95              		.thumb
+  96              		.thumb_func
+  97              		.type	Check_Temp_SetPriority, %function
+  98              	Check_Temp_SetPriority:
+  99              	.LFB70:
+ 235:Generated_Source\PSoC5/Check_Temp.c **** 
+ 236:Generated_Source\PSoC5/Check_Temp.c **** 
+ 237:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 238:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_SetPriority
+ 239:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 240:Generated_Source\PSoC5/Check_Temp.c **** *
+ 241:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 242:Generated_Source\PSoC5/Check_Temp.c **** *   Sets the Priority of the Interrupt. 
+ 243:Generated_Source\PSoC5/Check_Temp.c **** *
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 7
+
+
+ 244:Generated_Source\PSoC5/Check_Temp.c **** *   Note calling Check_Temp_Start or Check_Temp_StartEx will 
+ 245:Generated_Source\PSoC5/Check_Temp.c **** *   override any effect this API would have had. This API should only be called
+ 246:Generated_Source\PSoC5/Check_Temp.c **** *   after Check_Temp_Start or Check_Temp_StartEx has been called. 
+ 247:Generated_Source\PSoC5/Check_Temp.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 248:Generated_Source\PSoC5/Check_Temp.c **** *   Interrupt Editor.
+ 249:Generated_Source\PSoC5/Check_Temp.c **** *
+ 250:Generated_Source\PSoC5/Check_Temp.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 251:Generated_Source\PSoC5/Check_Temp.c **** *
+ 252:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 253:Generated_Source\PSoC5/Check_Temp.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 254:Generated_Source\PSoC5/Check_Temp.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 255:Generated_Source\PSoC5/Check_Temp.c **** *             PSoC 4: Priority is from 0 to 3.
+ 256:Generated_Source\PSoC5/Check_Temp.c **** *
+ 257:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 258:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 259:Generated_Source\PSoC5/Check_Temp.c **** *
+ 260:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 261:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_SetPriority(uint8 priority)
+ 262:Generated_Source\PSoC5/Check_Temp.c **** {
+ 100              		.loc 1 262 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              		@ link register save eliminated.
+ 105              	.LVL3:
+ 263:Generated_Source\PSoC5/Check_Temp.c ****     *Check_Temp_INTC_PRIOR = priority << 5;
+ 106              		.loc 1 263 0
+ 107 0000 4001     		lsls	r0, r0, #5
+ 108              	.LVL4:
+ 109 0002 C0B2     		uxtb	r0, r0
+ 110 0004 014B     		ldr	r3, .L9
+ 111 0006 1870     		strb	r0, [r3]
+ 112 0008 7047     		bx	lr
+ 113              	.L10:
+ 114 000a 00BF     		.align	2
+ 115              	.L9:
+ 116 000c 00E400E0 		.word	-536812544
+ 117              		.cfi_endproc
+ 118              	.LFE70:
+ 119              		.size	Check_Temp_SetPriority, .-Check_Temp_SetPriority
+ 120              		.section	.text.Check_Temp_GetPriority,"ax",%progbits
+ 121              		.align	2
+ 122              		.global	Check_Temp_GetPriority
+ 123              		.thumb
+ 124              		.thumb_func
+ 125              		.type	Check_Temp_GetPriority, %function
+ 126              	Check_Temp_GetPriority:
+ 127              	.LFB71:
+ 264:Generated_Source\PSoC5/Check_Temp.c **** }
+ 265:Generated_Source\PSoC5/Check_Temp.c **** 
+ 266:Generated_Source\PSoC5/Check_Temp.c **** 
+ 267:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 268:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_GetPriority
+ 269:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 270:Generated_Source\PSoC5/Check_Temp.c **** *
+ 271:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 272:Generated_Source\PSoC5/Check_Temp.c **** *   Gets the Priority of the Interrupt.
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 8
+
+
+ 273:Generated_Source\PSoC5/Check_Temp.c **** *
+ 274:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 275:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 276:Generated_Source\PSoC5/Check_Temp.c **** *
+ 277:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 278:Generated_Source\PSoC5/Check_Temp.c **** *   Priority of the interrupt, 0 being the highest priority
+ 279:Generated_Source\PSoC5/Check_Temp.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 280:Generated_Source\PSoC5/Check_Temp.c **** *    PSoC 4: Priority is from 0 to 3.
+ 281:Generated_Source\PSoC5/Check_Temp.c **** *
+ 282:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 283:Generated_Source\PSoC5/Check_Temp.c **** uint8 Check_Temp_GetPriority(void)
+ 284:Generated_Source\PSoC5/Check_Temp.c **** {
+ 128              		.loc 1 284 0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              		@ link register save eliminated.
+ 285:Generated_Source\PSoC5/Check_Temp.c ****     uint8 priority;
+ 286:Generated_Source\PSoC5/Check_Temp.c **** 
+ 287:Generated_Source\PSoC5/Check_Temp.c **** 
+ 288:Generated_Source\PSoC5/Check_Temp.c ****     priority = *Check_Temp_INTC_PRIOR >> 5;
+ 133              		.loc 1 288 0
+ 134 0000 014B     		ldr	r3, .L12
+ 135 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 136              	.LVL5:
+ 289:Generated_Source\PSoC5/Check_Temp.c **** 
+ 290:Generated_Source\PSoC5/Check_Temp.c ****     return priority;
+ 291:Generated_Source\PSoC5/Check_Temp.c **** }
+ 137              		.loc 1 291 0
+ 138 0004 4009     		lsrs	r0, r0, #5
+ 139              	.LVL6:
+ 140 0006 7047     		bx	lr
+ 141              	.L13:
+ 142              		.align	2
+ 143              	.L12:
+ 144 0008 00E400E0 		.word	-536812544
+ 145              		.cfi_endproc
+ 146              	.LFE71:
+ 147              		.size	Check_Temp_GetPriority, .-Check_Temp_GetPriority
+ 148              		.section	.text.Check_Temp_Enable,"ax",%progbits
+ 149              		.align	2
+ 150              		.global	Check_Temp_Enable
+ 151              		.thumb
+ 152              		.thumb_func
+ 153              		.type	Check_Temp_Enable, %function
+ 154              	Check_Temp_Enable:
+ 155              	.LFB72:
+ 292:Generated_Source\PSoC5/Check_Temp.c **** 
+ 293:Generated_Source\PSoC5/Check_Temp.c **** 
+ 294:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 295:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_Enable
+ 296:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 297:Generated_Source\PSoC5/Check_Temp.c **** *
+ 298:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 299:Generated_Source\PSoC5/Check_Temp.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 300:Generated_Source\PSoC5/Check_Temp.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 301:Generated_Source\PSoC5/Check_Temp.c **** *   function, which sets the vector and the priority, has been called.
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 9
+
+
+ 302:Generated_Source\PSoC5/Check_Temp.c **** *
+ 303:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 304:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 305:Generated_Source\PSoC5/Check_Temp.c **** *
+ 306:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 307:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 308:Generated_Source\PSoC5/Check_Temp.c **** *
+ 309:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 310:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_Enable(void)
+ 311:Generated_Source\PSoC5/Check_Temp.c **** {
+ 156              		.loc 1 311 0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              		@ link register save eliminated.
+ 312:Generated_Source\PSoC5/Check_Temp.c ****     /* Enable the general interrupt. */
+ 313:Generated_Source\PSoC5/Check_Temp.c ****     *Check_Temp_INTC_SET_EN = Check_Temp__INTC_MASK;
+ 161              		.loc 1 313 0
+ 162 0000 0122     		movs	r2, #1
+ 163 0002 014B     		ldr	r3, .L15
+ 164 0004 1A60     		str	r2, [r3]
+ 165 0006 7047     		bx	lr
+ 166              	.L16:
+ 167              		.align	2
+ 168              	.L15:
+ 169 0008 00E100E0 		.word	-536813312
+ 170              		.cfi_endproc
+ 171              	.LFE72:
+ 172              		.size	Check_Temp_Enable, .-Check_Temp_Enable
+ 173              		.section	.text.Check_Temp_GetState,"ax",%progbits
+ 174              		.align	2
+ 175              		.global	Check_Temp_GetState
+ 176              		.thumb
+ 177              		.thumb_func
+ 178              		.type	Check_Temp_GetState, %function
+ 179              	Check_Temp_GetState:
+ 180              	.LFB73:
+ 314:Generated_Source\PSoC5/Check_Temp.c **** }
+ 315:Generated_Source\PSoC5/Check_Temp.c **** 
+ 316:Generated_Source\PSoC5/Check_Temp.c **** 
+ 317:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 318:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_GetState
+ 319:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 320:Generated_Source\PSoC5/Check_Temp.c **** *
+ 321:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 322:Generated_Source\PSoC5/Check_Temp.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 323:Generated_Source\PSoC5/Check_Temp.c **** *
+ 324:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 325:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 326:Generated_Source\PSoC5/Check_Temp.c **** *
+ 327:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 328:Generated_Source\PSoC5/Check_Temp.c **** *   1 if enabled, 0 if disabled.
+ 329:Generated_Source\PSoC5/Check_Temp.c **** *
+ 330:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 331:Generated_Source\PSoC5/Check_Temp.c **** uint8 Check_Temp_GetState(void)
+ 332:Generated_Source\PSoC5/Check_Temp.c **** {
+ 181              		.loc 1 332 0
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 10
+
+
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              		@ link register save eliminated.
+ 333:Generated_Source\PSoC5/Check_Temp.c ****     /* Get the state of the general interrupt. */
+ 334:Generated_Source\PSoC5/Check_Temp.c ****     return ((*Check_Temp_INTC_SET_EN & (uint32)Check_Temp__INTC_MASK) != 0u) ? 1u:0u;
+ 186              		.loc 1 334 0
+ 187 0000 024B     		ldr	r3, .L18
+ 188 0002 1868     		ldr	r0, [r3]
+ 335:Generated_Source\PSoC5/Check_Temp.c **** }
+ 189              		.loc 1 335 0
+ 190 0004 00F00100 		and	r0, r0, #1
+ 191 0008 7047     		bx	lr
+ 192              	.L19:
+ 193 000a 00BF     		.align	2
+ 194              	.L18:
+ 195 000c 00E100E0 		.word	-536813312
+ 196              		.cfi_endproc
+ 197              	.LFE73:
+ 198              		.size	Check_Temp_GetState, .-Check_Temp_GetState
+ 199              		.section	.text.Check_Temp_Disable,"ax",%progbits
+ 200              		.align	2
+ 201              		.global	Check_Temp_Disable
+ 202              		.thumb
+ 203              		.thumb_func
+ 204              		.type	Check_Temp_Disable, %function
+ 205              	Check_Temp_Disable:
+ 206              	.LFB74:
+ 336:Generated_Source\PSoC5/Check_Temp.c **** 
+ 337:Generated_Source\PSoC5/Check_Temp.c **** 
+ 338:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 339:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_Disable
+ 340:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 341:Generated_Source\PSoC5/Check_Temp.c **** *
+ 342:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 343:Generated_Source\PSoC5/Check_Temp.c **** *   Disables the Interrupt in the interrupt controller.
+ 344:Generated_Source\PSoC5/Check_Temp.c **** *
+ 345:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 346:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 347:Generated_Source\PSoC5/Check_Temp.c **** *
+ 348:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 349:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 350:Generated_Source\PSoC5/Check_Temp.c **** *
+ 351:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 352:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_Disable(void)
+ 353:Generated_Source\PSoC5/Check_Temp.c **** {
+ 207              		.loc 1 353 0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211              		@ link register save eliminated.
+ 354:Generated_Source\PSoC5/Check_Temp.c ****     /* Disable the general interrupt. */
+ 355:Generated_Source\PSoC5/Check_Temp.c ****     *Check_Temp_INTC_CLR_EN = Check_Temp__INTC_MASK;
+ 212              		.loc 1 355 0
+ 213 0000 0122     		movs	r2, #1
+ 214 0002 014B     		ldr	r3, .L21
+ 215 0004 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 11
+
+
+ 216 0006 7047     		bx	lr
+ 217              	.L22:
+ 218              		.align	2
+ 219              	.L21:
+ 220 0008 80E100E0 		.word	-536813184
+ 221              		.cfi_endproc
+ 222              	.LFE74:
+ 223              		.size	Check_Temp_Disable, .-Check_Temp_Disable
+ 224              		.section	.text.Check_Temp_Start,"ax",%progbits
+ 225              		.align	2
+ 226              		.global	Check_Temp_Start
+ 227              		.thumb
+ 228              		.thumb_func
+ 229              		.type	Check_Temp_Start, %function
+ 230              	Check_Temp_Start:
+ 231              	.LFB64:
+  62:Generated_Source\PSoC5/Check_Temp.c ****     /* For all we know the interrupt is active. */
+ 232              		.loc 1 62 0
+ 233              		.cfi_startproc
+ 234              		@ args = 0, pretend = 0, frame = 0
+ 235              		@ frame_needed = 0, uses_anonymous_args = 0
+ 236 0000 08B5     		push	{r3, lr}
+ 237              		.cfi_def_cfa_offset 8
+ 238              		.cfi_offset 3, -8
+ 239              		.cfi_offset 14, -4
+  64:Generated_Source\PSoC5/Check_Temp.c **** 
+ 240              		.loc 1 64 0
+ 241 0002 FFF7FEFF 		bl	Check_Temp_Disable
+ 242              	.LVL7:
+  67:Generated_Source\PSoC5/Check_Temp.c **** 
+ 243              		.loc 1 67 0
+ 244 0006 0448     		ldr	r0, .L25
+ 245 0008 FFF7FEFF 		bl	Check_Temp_SetVector
+ 246              	.LVL8:
+  70:Generated_Source\PSoC5/Check_Temp.c **** 
+ 247              		.loc 1 70 0
+ 248 000c 0720     		movs	r0, #7
+ 249 000e FFF7FEFF 		bl	Check_Temp_SetPriority
+ 250              	.LVL9:
+  73:Generated_Source\PSoC5/Check_Temp.c **** }
+ 251              		.loc 1 73 0
+ 252 0012 FFF7FEFF 		bl	Check_Temp_Enable
+ 253              	.LVL10:
+ 254 0016 08BD     		pop	{r3, pc}
+ 255              	.L26:
+ 256              		.align	2
+ 257              	.L25:
+ 258 0018 00000000 		.word	Check_Temp_Interrupt
+ 259              		.cfi_endproc
+ 260              	.LFE64:
+ 261              		.size	Check_Temp_Start, .-Check_Temp_Start
+ 262              		.section	.text.Check_Temp_StartEx,"ax",%progbits
+ 263              		.align	2
+ 264              		.global	Check_Temp_StartEx
+ 265              		.thumb
+ 266              		.thumb_func
+ 267              		.type	Check_Temp_StartEx, %function
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 12
+
+
+ 268              	Check_Temp_StartEx:
+ 269              	.LFB65:
+ 105:Generated_Source\PSoC5/Check_Temp.c ****     /* For all we know the interrupt is active. */
+ 270              		.loc 1 105 0
+ 271              		.cfi_startproc
+ 272              		@ args = 0, pretend = 0, frame = 0
+ 273              		@ frame_needed = 0, uses_anonymous_args = 0
+ 274              	.LVL11:
+ 275 0000 10B5     		push	{r4, lr}
+ 276              		.cfi_def_cfa_offset 8
+ 277              		.cfi_offset 4, -8
+ 278              		.cfi_offset 14, -4
+ 279 0002 0446     		mov	r4, r0
+ 107:Generated_Source\PSoC5/Check_Temp.c **** 
+ 280              		.loc 1 107 0
+ 281 0004 FFF7FEFF 		bl	Check_Temp_Disable
+ 282              	.LVL12:
+ 110:Generated_Source\PSoC5/Check_Temp.c **** 
+ 283              		.loc 1 110 0
+ 284 0008 2046     		mov	r0, r4
+ 285 000a FFF7FEFF 		bl	Check_Temp_SetVector
+ 286              	.LVL13:
+ 113:Generated_Source\PSoC5/Check_Temp.c **** 
+ 287              		.loc 1 113 0
+ 288 000e 0720     		movs	r0, #7
+ 289 0010 FFF7FEFF 		bl	Check_Temp_SetPriority
+ 290              	.LVL14:
+ 116:Generated_Source\PSoC5/Check_Temp.c **** }
+ 291              		.loc 1 116 0
+ 292 0014 FFF7FEFF 		bl	Check_Temp_Enable
+ 293              	.LVL15:
+ 294 0018 10BD     		pop	{r4, pc}
+ 295              		.cfi_endproc
+ 296              	.LFE65:
+ 297              		.size	Check_Temp_StartEx, .-Check_Temp_StartEx
+ 298 001a 00BF     		.section	.text.Check_Temp_Stop,"ax",%progbits
+ 299              		.align	2
+ 300              		.global	Check_Temp_Stop
+ 301              		.thumb
+ 302              		.thumb_func
+ 303              		.type	Check_Temp_Stop, %function
+ 304              	Check_Temp_Stop:
+ 305              	.LFB66:
+ 135:Generated_Source\PSoC5/Check_Temp.c ****     /* Disable this interrupt. */
+ 306              		.loc 1 135 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 0
+ 309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 310 0000 08B5     		push	{r3, lr}
+ 311              		.cfi_def_cfa_offset 8
+ 312              		.cfi_offset 3, -8
+ 313              		.cfi_offset 14, -4
+ 137:Generated_Source\PSoC5/Check_Temp.c **** 
+ 314              		.loc 1 137 0
+ 315 0002 FFF7FEFF 		bl	Check_Temp_Disable
+ 316              	.LVL16:
+ 140:Generated_Source\PSoC5/Check_Temp.c **** }
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 13
+
+
+ 317              		.loc 1 140 0
+ 318 0006 0248     		ldr	r0, .L31
+ 319 0008 FFF7FEFF 		bl	Check_Temp_SetVector
+ 320              	.LVL17:
+ 321 000c 08BD     		pop	{r3, pc}
+ 322              	.L32:
+ 323 000e 00BF     		.align	2
+ 324              	.L31:
+ 325 0010 00000000 		.word	IntDefaultHandler
+ 326              		.cfi_endproc
+ 327              	.LFE66:
+ 328              		.size	Check_Temp_Stop, .-Check_Temp_Stop
+ 329              		.section	.text.Check_Temp_SetPending,"ax",%progbits
+ 330              		.align	2
+ 331              		.global	Check_Temp_SetPending
+ 332              		.thumb
+ 333              		.thumb_func
+ 334              		.type	Check_Temp_SetPending, %function
+ 335              	Check_Temp_SetPending:
+ 336              	.LFB75:
+ 356:Generated_Source\PSoC5/Check_Temp.c **** }
+ 357:Generated_Source\PSoC5/Check_Temp.c **** 
+ 358:Generated_Source\PSoC5/Check_Temp.c **** 
+ 359:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 360:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_SetPending
+ 361:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 362:Generated_Source\PSoC5/Check_Temp.c **** *
+ 363:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 364:Generated_Source\PSoC5/Check_Temp.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 365:Generated_Source\PSoC5/Check_Temp.c **** *   generating the interrupt.
+ 366:Generated_Source\PSoC5/Check_Temp.c **** *
+ 367:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 368:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 369:Generated_Source\PSoC5/Check_Temp.c **** *
+ 370:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 371:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 372:Generated_Source\PSoC5/Check_Temp.c **** *
+ 373:Generated_Source\PSoC5/Check_Temp.c **** * Side Effects:
+ 374:Generated_Source\PSoC5/Check_Temp.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 375:Generated_Source\PSoC5/Check_Temp.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 376:Generated_Source\PSoC5/Check_Temp.c **** *   interrupts).
+ 377:Generated_Source\PSoC5/Check_Temp.c **** *
+ 378:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 379:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_SetPending(void)
+ 380:Generated_Source\PSoC5/Check_Temp.c **** {
+ 337              		.loc 1 380 0
+ 338              		.cfi_startproc
+ 339              		@ args = 0, pretend = 0, frame = 0
+ 340              		@ frame_needed = 0, uses_anonymous_args = 0
+ 341              		@ link register save eliminated.
+ 381:Generated_Source\PSoC5/Check_Temp.c ****     *Check_Temp_INTC_SET_PD = Check_Temp__INTC_MASK;
+ 342              		.loc 1 381 0
+ 343 0000 0122     		movs	r2, #1
+ 344 0002 014B     		ldr	r3, .L34
+ 345 0004 1A60     		str	r2, [r3]
+ 346 0006 7047     		bx	lr
+ 347              	.L35:
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 14
+
+
+ 348              		.align	2
+ 349              	.L34:
+ 350 0008 00E200E0 		.word	-536813056
+ 351              		.cfi_endproc
+ 352              	.LFE75:
+ 353              		.size	Check_Temp_SetPending, .-Check_Temp_SetPending
+ 354              		.section	.text.Check_Temp_ClearPending,"ax",%progbits
+ 355              		.align	2
+ 356              		.global	Check_Temp_ClearPending
+ 357              		.thumb
+ 358              		.thumb_func
+ 359              		.type	Check_Temp_ClearPending, %function
+ 360              	Check_Temp_ClearPending:
+ 361              	.LFB76:
+ 382:Generated_Source\PSoC5/Check_Temp.c **** }
+ 383:Generated_Source\PSoC5/Check_Temp.c **** 
+ 384:Generated_Source\PSoC5/Check_Temp.c **** 
+ 385:Generated_Source\PSoC5/Check_Temp.c **** /*******************************************************************************
+ 386:Generated_Source\PSoC5/Check_Temp.c **** * Function Name: Check_Temp_ClearPending
+ 387:Generated_Source\PSoC5/Check_Temp.c **** ********************************************************************************
+ 388:Generated_Source\PSoC5/Check_Temp.c **** *
+ 389:Generated_Source\PSoC5/Check_Temp.c **** * Summary:
+ 390:Generated_Source\PSoC5/Check_Temp.c **** *   Clears a pending interrupt in the interrupt controller.
+ 391:Generated_Source\PSoC5/Check_Temp.c **** *
+ 392:Generated_Source\PSoC5/Check_Temp.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 393:Generated_Source\PSoC5/Check_Temp.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 394:Generated_Source\PSoC5/Check_Temp.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 395:Generated_Source\PSoC5/Check_Temp.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 396:Generated_Source\PSoC5/Check_Temp.c **** *
+ 397:Generated_Source\PSoC5/Check_Temp.c **** * Parameters:
+ 398:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 399:Generated_Source\PSoC5/Check_Temp.c **** *
+ 400:Generated_Source\PSoC5/Check_Temp.c **** * Return:
+ 401:Generated_Source\PSoC5/Check_Temp.c **** *   None
+ 402:Generated_Source\PSoC5/Check_Temp.c **** *
+ 403:Generated_Source\PSoC5/Check_Temp.c **** *******************************************************************************/
+ 404:Generated_Source\PSoC5/Check_Temp.c **** void Check_Temp_ClearPending(void)
+ 405:Generated_Source\PSoC5/Check_Temp.c **** {
+ 362              		.loc 1 405 0
+ 363              		.cfi_startproc
+ 364              		@ args = 0, pretend = 0, frame = 0
+ 365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 366              		@ link register save eliminated.
+ 406:Generated_Source\PSoC5/Check_Temp.c ****     *Check_Temp_INTC_CLR_PD = Check_Temp__INTC_MASK;
+ 367              		.loc 1 406 0
+ 368 0000 0122     		movs	r2, #1
+ 369 0002 014B     		ldr	r3, .L37
+ 370 0004 1A60     		str	r2, [r3]
+ 371 0006 7047     		bx	lr
+ 372              	.L38:
+ 373              		.align	2
+ 374              	.L37:
+ 375 0008 80E200E0 		.word	-536812928
+ 376              		.cfi_endproc
+ 377              	.LFE76:
+ 378              		.size	Check_Temp_ClearPending, .-Check_Temp_ClearPending
+ 379              		.text
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 15
+
+
+ 380              	.Letext0:
+ 381              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 382              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 383              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 384              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 385              		.section	.debug_info,"",%progbits
+ 386              	.Ldebug_info0:
+ 387 0000 F5020000 		.4byte	0x2f5
+ 388 0004 0400     		.2byte	0x4
+ 389 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 390 000a 04       		.byte	0x4
+ 391 000b 01       		.uleb128 0x1
+ 392 000c 75000000 		.4byte	.LASF36
+ 393 0010 0C       		.byte	0xc
+ 394 0011 C5010000 		.4byte	.LASF37
+ 395 0015 40010000 		.4byte	.LASF38
+ 396 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 397 001d 00000000 		.4byte	0
+ 398 0021 00000000 		.4byte	.Ldebug_line0
+ 399 0025 02       		.uleb128 0x2
+ 400 0026 04       		.byte	0x4
+ 401 0027 05       		.byte	0x5
+ 402 0028 696E7400 		.ascii	"int\000"
+ 403 002c 03       		.uleb128 0x3
+ 404 002d 04       		.byte	0x4
+ 405 002e 07       		.byte	0x7
+ 406 002f F9010000 		.4byte	.LASF0
+ 407 0033 03       		.uleb128 0x3
+ 408 0034 08       		.byte	0x8
+ 409 0035 05       		.byte	0x5
+ 410 0036 90020000 		.4byte	.LASF1
+ 411 003a 03       		.uleb128 0x3
+ 412 003b 08       		.byte	0x8
+ 413 003c 04       		.byte	0x4
+ 414 003d E2020000 		.4byte	.LASF2
+ 415 0041 03       		.uleb128 0x3
+ 416 0042 01       		.byte	0x1
+ 417 0043 06       		.byte	0x6
+ 418 0044 EE020000 		.4byte	.LASF3
+ 419 0048 03       		.uleb128 0x3
+ 420 0049 01       		.byte	0x1
+ 421 004a 08       		.byte	0x8
+ 422 004b 67000000 		.4byte	.LASF4
+ 423 004f 03       		.uleb128 0x3
+ 424 0050 02       		.byte	0x2
+ 425 0051 05       		.byte	0x5
+ 426 0052 C9020000 		.4byte	.LASF5
+ 427 0056 03       		.uleb128 0x3
+ 428 0057 02       		.byte	0x2
+ 429 0058 07       		.byte	0x7
+ 430 0059 2D010000 		.4byte	.LASF6
+ 431 005d 04       		.uleb128 0x4
+ 432 005e 1B000000 		.4byte	.LASF12
+ 433 0062 02       		.byte	0x2
+ 434 0063 3F       		.byte	0x3f
+ 435 0064 68000000 		.4byte	0x68
+ 436 0068 03       		.uleb128 0x3
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 16
+
+
+ 437 0069 04       		.byte	0x4
+ 438 006a 05       		.byte	0x5
+ 439 006b D9020000 		.4byte	.LASF7
+ 440 006f 03       		.uleb128 0x3
+ 441 0070 04       		.byte	0x4
+ 442 0071 07       		.byte	0x7
+ 443 0072 1B010000 		.4byte	.LASF8
+ 444 0076 03       		.uleb128 0x3
+ 445 0077 08       		.byte	0x8
+ 446 0078 07       		.byte	0x7
+ 447 0079 0E020000 		.4byte	.LASF9
+ 448 007d 03       		.uleb128 0x3
+ 449 007e 04       		.byte	0x4
+ 450 007f 07       		.byte	0x7
+ 451 0080 71020000 		.4byte	.LASF10
+ 452 0084 03       		.uleb128 0x3
+ 453 0085 01       		.byte	0x1
+ 454 0086 08       		.byte	0x8
+ 455 0087 9E020000 		.4byte	.LASF11
+ 456 008b 05       		.uleb128 0x5
+ 457 008c 04       		.byte	0x4
+ 458 008d 91000000 		.4byte	0x91
+ 459 0091 06       		.uleb128 0x6
+ 460 0092 04       		.uleb128 0x4
+ 461 0093 69020000 		.4byte	.LASF13
+ 462 0097 03       		.byte	0x3
+ 463 0098 2C       		.byte	0x2c
+ 464 0099 5D000000 		.4byte	0x5d
+ 465 009d 07       		.uleb128 0x7
+ 466 009e D3020000 		.4byte	.LASF14
+ 467 00a2 04       		.byte	0x4
+ 468 00a3 9201     		.2byte	0x192
+ 469 00a5 48000000 		.4byte	0x48
+ 470 00a9 07       		.uleb128 0x7
+ 471 00aa F2010000 		.4byte	.LASF15
+ 472 00ae 04       		.byte	0x4
+ 473 00af 9401     		.2byte	0x194
+ 474 00b1 6F000000 		.4byte	0x6f
+ 475 00b5 03       		.uleb128 0x3
+ 476 00b6 04       		.byte	0x4
+ 477 00b7 04       		.byte	0x4
+ 478 00b8 4D000000 		.4byte	.LASF16
+ 479 00bc 03       		.uleb128 0x3
+ 480 00bd 08       		.byte	0x8
+ 481 00be 04       		.byte	0x4
+ 482 00bf A6010000 		.4byte	.LASF17
+ 483 00c3 07       		.uleb128 0x7
+ 484 00c4 03010000 		.4byte	.LASF18
+ 485 00c8 04       		.byte	0x4
+ 486 00c9 3C02     		.2byte	0x23c
+ 487 00cb CF000000 		.4byte	0xcf
+ 488 00cf 08       		.uleb128 0x8
+ 489 00d0 9D000000 		.4byte	0x9d
+ 490 00d4 07       		.uleb128 0x7
+ 491 00d5 00000000 		.4byte	.LASF19
+ 492 00d9 04       		.byte	0x4
+ 493 00da 3E02     		.2byte	0x23e
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 17
+
+
+ 494 00dc E0000000 		.4byte	0xe0
+ 495 00e0 08       		.uleb128 0x8
+ 496 00e1 A9000000 		.4byte	0xa9
+ 497 00e5 07       		.uleb128 0x7
+ 498 00e6 35020000 		.4byte	.LASF20
+ 499 00ea 04       		.byte	0x4
+ 500 00eb 4E02     		.2byte	0x24e
+ 501 00ed 8B000000 		.4byte	0x8b
+ 502 00f1 09       		.uleb128 0x9
+ 503 00f2 06000000 		.4byte	.LASF28
+ 504 00f6 01       		.byte	0x1
+ 505 00f7 A0       		.byte	0xa0
+ 506 00f8 00000000 		.4byte	.LFB67
+ 507 00fc 02000000 		.4byte	.LFE67-.LFB67
+ 508 0100 01       		.uleb128 0x1
+ 509 0101 9C       		.byte	0x9c
+ 510 0102 0A       		.uleb128 0xa
+ 511 0103 42020000 		.4byte	.LASF22
+ 512 0107 01       		.byte	0x1
+ 513 0108 CB       		.byte	0xcb
+ 514 0109 00000000 		.4byte	.LFB68
+ 515 010d 0C000000 		.4byte	.LFE68-.LFB68
+ 516 0111 01       		.uleb128 0x1
+ 517 0112 9C       		.byte	0x9c
+ 518 0113 32010000 		.4byte	0x132
+ 519 0117 0B       		.uleb128 0xb
+ 520 0118 06020000 		.4byte	.LASF24
+ 521 011c 01       		.byte	0x1
+ 522 011d CB       		.byte	0xcb
+ 523 011e E5000000 		.4byte	0xe5
+ 524 0122 01       		.uleb128 0x1
+ 525 0123 50       		.byte	0x50
+ 526 0124 0C       		.uleb128 0xc
+ 527 0125 A3020000 		.4byte	.LASF21
+ 528 0129 01       		.byte	0x1
+ 529 012a CD       		.byte	0xcd
+ 530 012b 32010000 		.4byte	0x132
+ 531 012f 01       		.uleb128 0x1
+ 532 0130 53       		.byte	0x53
+ 533 0131 00       		.byte	0
+ 534 0132 05       		.uleb128 0x5
+ 535 0133 04       		.byte	0x4
+ 536 0134 E5000000 		.4byte	0xe5
+ 537 0138 0D       		.uleb128 0xd
+ 538 0139 25000000 		.4byte	.LASF26
+ 539 013d 01       		.byte	0x1
+ 540 013e E3       		.byte	0xe3
+ 541 013f E5000000 		.4byte	0xe5
+ 542 0143 00000000 		.4byte	.LFB69
+ 543 0147 0C000000 		.4byte	.LFE69-.LFB69
+ 544 014b 01       		.uleb128 0x1
+ 545 014c 9C       		.byte	0x9c
+ 546 014d 5F010000 		.4byte	0x15f
+ 547 0151 0C       		.uleb128 0xc
+ 548 0152 A3020000 		.4byte	.LASF21
+ 549 0156 01       		.byte	0x1
+ 550 0157 E5       		.byte	0xe5
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 18
+
+
+ 551 0158 32010000 		.4byte	0x132
+ 552 015c 01       		.uleb128 0x1
+ 553 015d 53       		.byte	0x53
+ 554 015e 00       		.byte	0
+ 555 015f 0E       		.uleb128 0xe
+ 556 0160 8F010000 		.4byte	.LASF23
+ 557 0164 01       		.byte	0x1
+ 558 0165 0501     		.2byte	0x105
+ 559 0167 00000000 		.4byte	.LFB70
+ 560 016b 10000000 		.4byte	.LFE70-.LFB70
+ 561 016f 01       		.uleb128 0x1
+ 562 0170 9C       		.byte	0x9c
+ 563 0171 86010000 		.4byte	0x186
+ 564 0175 0F       		.uleb128 0xf
+ 565 0176 E9010000 		.4byte	.LASF25
+ 566 017a 01       		.byte	0x1
+ 567 017b 0501     		.2byte	0x105
+ 568 017d 9D000000 		.4byte	0x9d
+ 569 0181 00000000 		.4byte	.LLST0
+ 570 0185 00       		.byte	0
+ 571 0186 10       		.uleb128 0x10
+ 572 0187 B2020000 		.4byte	.LASF27
+ 573 018b 01       		.byte	0x1
+ 574 018c 1B01     		.2byte	0x11b
+ 575 018e 9D000000 		.4byte	0x9d
+ 576 0192 00000000 		.4byte	.LFB71
+ 577 0196 0C000000 		.4byte	.LFE71-.LFB71
+ 578 019a 01       		.uleb128 0x1
+ 579 019b 9C       		.byte	0x9c
+ 580 019c B1010000 		.4byte	0x1b1
+ 581 01a0 11       		.uleb128 0x11
+ 582 01a1 E9010000 		.4byte	.LASF25
+ 583 01a5 01       		.byte	0x1
+ 584 01a6 1D01     		.2byte	0x11d
+ 585 01a8 9D000000 		.4byte	0x9d
+ 586 01ac 21000000 		.4byte	.LLST1
+ 587 01b0 00       		.byte	0
+ 588 01b1 12       		.uleb128 0x12
+ 589 01b2 57020000 		.4byte	.LASF29
+ 590 01b6 01       		.byte	0x1
+ 591 01b7 3601     		.2byte	0x136
+ 592 01b9 00000000 		.4byte	.LFB72
+ 593 01bd 0C000000 		.4byte	.LFE72-.LFB72
+ 594 01c1 01       		.uleb128 0x1
+ 595 01c2 9C       		.byte	0x9c
+ 596 01c3 13       		.uleb128 0x13
+ 597 01c4 53000000 		.4byte	.LASF39
+ 598 01c8 01       		.byte	0x1
+ 599 01c9 4B01     		.2byte	0x14b
+ 600 01cb 9D000000 		.4byte	0x9d
+ 601 01cf 00000000 		.4byte	.LFB73
+ 602 01d3 10000000 		.4byte	.LFE73-.LFB73
+ 603 01d7 01       		.uleb128 0x1
+ 604 01d8 9C       		.byte	0x9c
+ 605 01d9 12       		.uleb128 0x12
+ 606 01da 08010000 		.4byte	.LASF30
+ 607 01de 01       		.byte	0x1
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 19
+
+
+ 608 01df 6001     		.2byte	0x160
+ 609 01e1 00000000 		.4byte	.LFB74
+ 610 01e5 0C000000 		.4byte	.LFE74-.LFB74
+ 611 01e9 01       		.uleb128 0x1
+ 612 01ea 9C       		.byte	0x9c
+ 613 01eb 0A       		.uleb128 0xa
+ 614 01ec FA020000 		.4byte	.LASF31
+ 615 01f0 01       		.byte	0x1
+ 616 01f1 3D       		.byte	0x3d
+ 617 01f2 00000000 		.4byte	.LFB64
+ 618 01f6 1C000000 		.4byte	.LFE64-.LFB64
+ 619 01fa 01       		.uleb128 0x1
+ 620 01fb 9C       		.byte	0x9c
+ 621 01fc 3D020000 		.4byte	0x23d
+ 622 0200 14       		.uleb128 0x14
+ 623 0201 06000000 		.4byte	.LVL7
+ 624 0205 D9010000 		.4byte	0x1d9
+ 625 0209 15       		.uleb128 0x15
+ 626 020a 0C000000 		.4byte	.LVL8
+ 627 020e 02010000 		.4byte	0x102
+ 628 0212 20020000 		.4byte	0x220
+ 629 0216 16       		.uleb128 0x16
+ 630 0217 01       		.uleb128 0x1
+ 631 0218 50       		.byte	0x50
+ 632 0219 05       		.uleb128 0x5
+ 633 021a 03       		.byte	0x3
+ 634 021b 00000000 		.4byte	Check_Temp_Interrupt
+ 635 021f 00       		.byte	0
+ 636 0220 15       		.uleb128 0x15
+ 637 0221 12000000 		.4byte	.LVL9
+ 638 0225 5F010000 		.4byte	0x15f
+ 639 0229 33020000 		.4byte	0x233
+ 640 022d 16       		.uleb128 0x16
+ 641 022e 01       		.uleb128 0x1
+ 642 022f 50       		.byte	0x50
+ 643 0230 01       		.uleb128 0x1
+ 644 0231 37       		.byte	0x37
+ 645 0232 00       		.byte	0
+ 646 0233 14       		.uleb128 0x14
+ 647 0234 16000000 		.4byte	.LVL10
+ 648 0238 B1010000 		.4byte	0x1b1
+ 649 023c 00       		.byte	0
+ 650 023d 0A       		.uleb128 0xa
+ 651 023e 3A000000 		.4byte	.LASF32
+ 652 0242 01       		.byte	0x1
+ 653 0243 68       		.byte	0x68
+ 654 0244 00000000 		.4byte	.LFB65
+ 655 0248 1A000000 		.4byte	.LFE65-.LFB65
+ 656 024c 01       		.uleb128 0x1
+ 657 024d 9C       		.byte	0x9c
+ 658 024e 9B020000 		.4byte	0x29b
+ 659 0252 17       		.uleb128 0x17
+ 660 0253 06020000 		.4byte	.LASF24
+ 661 0257 01       		.byte	0x1
+ 662 0258 68       		.byte	0x68
+ 663 0259 E5000000 		.4byte	0xe5
+ 664 025d 38000000 		.4byte	.LLST2
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 20
+
+
+ 665 0261 14       		.uleb128 0x14
+ 666 0262 08000000 		.4byte	.LVL12
+ 667 0266 D9010000 		.4byte	0x1d9
+ 668 026a 15       		.uleb128 0x15
+ 669 026b 0E000000 		.4byte	.LVL13
+ 670 026f 02010000 		.4byte	0x102
+ 671 0273 7E020000 		.4byte	0x27e
+ 672 0277 16       		.uleb128 0x16
+ 673 0278 01       		.uleb128 0x1
+ 674 0279 50       		.byte	0x50
+ 675 027a 02       		.uleb128 0x2
+ 676 027b 74       		.byte	0x74
+ 677 027c 00       		.sleb128 0
+ 678 027d 00       		.byte	0
+ 679 027e 15       		.uleb128 0x15
+ 680 027f 14000000 		.4byte	.LVL14
+ 681 0283 5F010000 		.4byte	0x15f
+ 682 0287 91020000 		.4byte	0x291
+ 683 028b 16       		.uleb128 0x16
+ 684 028c 01       		.uleb128 0x1
+ 685 028d 50       		.byte	0x50
+ 686 028e 01       		.uleb128 0x1
+ 687 028f 37       		.byte	0x37
+ 688 0290 00       		.byte	0
+ 689 0291 14       		.uleb128 0x14
+ 690 0292 18000000 		.4byte	.LVL15
+ 691 0296 B1010000 		.4byte	0x1b1
+ 692 029a 00       		.byte	0
+ 693 029b 0A       		.uleb128 0xa
+ 694 029c 25020000 		.4byte	.LASF33
+ 695 02a0 01       		.byte	0x1
+ 696 02a1 86       		.byte	0x86
+ 697 02a2 00000000 		.4byte	.LFB66
+ 698 02a6 14000000 		.4byte	.LFE66-.LFB66
+ 699 02aa 01       		.uleb128 0x1
+ 700 02ab 9C       		.byte	0x9c
+ 701 02ac C3020000 		.4byte	0x2c3
+ 702 02b0 14       		.uleb128 0x14
+ 703 02b1 06000000 		.4byte	.LVL16
+ 704 02b5 D9010000 		.4byte	0x1d9
+ 705 02b9 14       		.uleb128 0x14
+ 706 02ba 0C000000 		.4byte	.LVL17
+ 707 02be 02010000 		.4byte	0x102
+ 708 02c2 00       		.byte	0
+ 709 02c3 12       		.uleb128 0x12
+ 710 02c4 7A020000 		.4byte	.LASF34
+ 711 02c8 01       		.byte	0x1
+ 712 02c9 7B01     		.2byte	0x17b
+ 713 02cb 00000000 		.4byte	.LFB75
+ 714 02cf 0C000000 		.4byte	.LFE75-.LFB75
+ 715 02d3 01       		.uleb128 0x1
+ 716 02d4 9C       		.byte	0x9c
+ 717 02d5 12       		.uleb128 0x12
+ 718 02d6 AD010000 		.4byte	.LASF35
+ 719 02da 01       		.byte	0x1
+ 720 02db 9401     		.2byte	0x194
+ 721 02dd 00000000 		.4byte	.LFB76
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 21
+
+
+ 722 02e1 0C000000 		.4byte	.LFE76-.LFB76
+ 723 02e5 01       		.uleb128 0x1
+ 724 02e6 9C       		.byte	0x9c
+ 725 02e7 18       		.uleb128 0x18
+ 726 02e8 82010000 		.4byte	.LASF40
+ 727 02ec 05       		.byte	0x5
+ 728 02ed 1207     		.2byte	0x712
+ 729 02ef F3020000 		.4byte	0x2f3
+ 730 02f3 08       		.uleb128 0x8
+ 731 02f4 92000000 		.4byte	0x92
+ 732 02f8 00       		.byte	0
+ 733              		.section	.debug_abbrev,"",%progbits
+ 734              	.Ldebug_abbrev0:
+ 735 0000 01       		.uleb128 0x1
+ 736 0001 11       		.uleb128 0x11
+ 737 0002 01       		.byte	0x1
+ 738 0003 25       		.uleb128 0x25
+ 739 0004 0E       		.uleb128 0xe
+ 740 0005 13       		.uleb128 0x13
+ 741 0006 0B       		.uleb128 0xb
+ 742 0007 03       		.uleb128 0x3
+ 743 0008 0E       		.uleb128 0xe
+ 744 0009 1B       		.uleb128 0x1b
+ 745 000a 0E       		.uleb128 0xe
+ 746 000b 55       		.uleb128 0x55
+ 747 000c 17       		.uleb128 0x17
+ 748 000d 11       		.uleb128 0x11
+ 749 000e 01       		.uleb128 0x1
+ 750 000f 10       		.uleb128 0x10
+ 751 0010 17       		.uleb128 0x17
+ 752 0011 00       		.byte	0
+ 753 0012 00       		.byte	0
+ 754 0013 02       		.uleb128 0x2
+ 755 0014 24       		.uleb128 0x24
+ 756 0015 00       		.byte	0
+ 757 0016 0B       		.uleb128 0xb
+ 758 0017 0B       		.uleb128 0xb
+ 759 0018 3E       		.uleb128 0x3e
+ 760 0019 0B       		.uleb128 0xb
+ 761 001a 03       		.uleb128 0x3
+ 762 001b 08       		.uleb128 0x8
+ 763 001c 00       		.byte	0
+ 764 001d 00       		.byte	0
+ 765 001e 03       		.uleb128 0x3
+ 766 001f 24       		.uleb128 0x24
+ 767 0020 00       		.byte	0
+ 768 0021 0B       		.uleb128 0xb
+ 769 0022 0B       		.uleb128 0xb
+ 770 0023 3E       		.uleb128 0x3e
+ 771 0024 0B       		.uleb128 0xb
+ 772 0025 03       		.uleb128 0x3
+ 773 0026 0E       		.uleb128 0xe
+ 774 0027 00       		.byte	0
+ 775 0028 00       		.byte	0
+ 776 0029 04       		.uleb128 0x4
+ 777 002a 16       		.uleb128 0x16
+ 778 002b 00       		.byte	0
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 22
+
+
+ 779 002c 03       		.uleb128 0x3
+ 780 002d 0E       		.uleb128 0xe
+ 781 002e 3A       		.uleb128 0x3a
+ 782 002f 0B       		.uleb128 0xb
+ 783 0030 3B       		.uleb128 0x3b
+ 784 0031 0B       		.uleb128 0xb
+ 785 0032 49       		.uleb128 0x49
+ 786 0033 13       		.uleb128 0x13
+ 787 0034 00       		.byte	0
+ 788 0035 00       		.byte	0
+ 789 0036 05       		.uleb128 0x5
+ 790 0037 0F       		.uleb128 0xf
+ 791 0038 00       		.byte	0
+ 792 0039 0B       		.uleb128 0xb
+ 793 003a 0B       		.uleb128 0xb
+ 794 003b 49       		.uleb128 0x49
+ 795 003c 13       		.uleb128 0x13
+ 796 003d 00       		.byte	0
+ 797 003e 00       		.byte	0
+ 798 003f 06       		.uleb128 0x6
+ 799 0040 15       		.uleb128 0x15
+ 800 0041 00       		.byte	0
+ 801 0042 27       		.uleb128 0x27
+ 802 0043 19       		.uleb128 0x19
+ 803 0044 00       		.byte	0
+ 804 0045 00       		.byte	0
+ 805 0046 07       		.uleb128 0x7
+ 806 0047 16       		.uleb128 0x16
+ 807 0048 00       		.byte	0
+ 808 0049 03       		.uleb128 0x3
+ 809 004a 0E       		.uleb128 0xe
+ 810 004b 3A       		.uleb128 0x3a
+ 811 004c 0B       		.uleb128 0xb
+ 812 004d 3B       		.uleb128 0x3b
+ 813 004e 05       		.uleb128 0x5
+ 814 004f 49       		.uleb128 0x49
+ 815 0050 13       		.uleb128 0x13
+ 816 0051 00       		.byte	0
+ 817 0052 00       		.byte	0
+ 818 0053 08       		.uleb128 0x8
+ 819 0054 35       		.uleb128 0x35
+ 820 0055 00       		.byte	0
+ 821 0056 49       		.uleb128 0x49
+ 822 0057 13       		.uleb128 0x13
+ 823 0058 00       		.byte	0
+ 824 0059 00       		.byte	0
+ 825 005a 09       		.uleb128 0x9
+ 826 005b 2E       		.uleb128 0x2e
+ 827 005c 00       		.byte	0
+ 828 005d 3F       		.uleb128 0x3f
+ 829 005e 19       		.uleb128 0x19
+ 830 005f 03       		.uleb128 0x3
+ 831 0060 0E       		.uleb128 0xe
+ 832 0061 3A       		.uleb128 0x3a
+ 833 0062 0B       		.uleb128 0xb
+ 834 0063 3B       		.uleb128 0x3b
+ 835 0064 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 23
+
+
+ 836 0065 27       		.uleb128 0x27
+ 837 0066 19       		.uleb128 0x19
+ 838 0067 11       		.uleb128 0x11
+ 839 0068 01       		.uleb128 0x1
+ 840 0069 12       		.uleb128 0x12
+ 841 006a 06       		.uleb128 0x6
+ 842 006b 40       		.uleb128 0x40
+ 843 006c 18       		.uleb128 0x18
+ 844 006d 9742     		.uleb128 0x2117
+ 845 006f 19       		.uleb128 0x19
+ 846 0070 00       		.byte	0
+ 847 0071 00       		.byte	0
+ 848 0072 0A       		.uleb128 0xa
+ 849 0073 2E       		.uleb128 0x2e
+ 850 0074 01       		.byte	0x1
+ 851 0075 3F       		.uleb128 0x3f
+ 852 0076 19       		.uleb128 0x19
+ 853 0077 03       		.uleb128 0x3
+ 854 0078 0E       		.uleb128 0xe
+ 855 0079 3A       		.uleb128 0x3a
+ 856 007a 0B       		.uleb128 0xb
+ 857 007b 3B       		.uleb128 0x3b
+ 858 007c 0B       		.uleb128 0xb
+ 859 007d 27       		.uleb128 0x27
+ 860 007e 19       		.uleb128 0x19
+ 861 007f 11       		.uleb128 0x11
+ 862 0080 01       		.uleb128 0x1
+ 863 0081 12       		.uleb128 0x12
+ 864 0082 06       		.uleb128 0x6
+ 865 0083 40       		.uleb128 0x40
+ 866 0084 18       		.uleb128 0x18
+ 867 0085 9742     		.uleb128 0x2117
+ 868 0087 19       		.uleb128 0x19
+ 869 0088 01       		.uleb128 0x1
+ 870 0089 13       		.uleb128 0x13
+ 871 008a 00       		.byte	0
+ 872 008b 00       		.byte	0
+ 873 008c 0B       		.uleb128 0xb
+ 874 008d 05       		.uleb128 0x5
+ 875 008e 00       		.byte	0
+ 876 008f 03       		.uleb128 0x3
+ 877 0090 0E       		.uleb128 0xe
+ 878 0091 3A       		.uleb128 0x3a
+ 879 0092 0B       		.uleb128 0xb
+ 880 0093 3B       		.uleb128 0x3b
+ 881 0094 0B       		.uleb128 0xb
+ 882 0095 49       		.uleb128 0x49
+ 883 0096 13       		.uleb128 0x13
+ 884 0097 02       		.uleb128 0x2
+ 885 0098 18       		.uleb128 0x18
+ 886 0099 00       		.byte	0
+ 887 009a 00       		.byte	0
+ 888 009b 0C       		.uleb128 0xc
+ 889 009c 34       		.uleb128 0x34
+ 890 009d 00       		.byte	0
+ 891 009e 03       		.uleb128 0x3
+ 892 009f 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 24
+
+
+ 893 00a0 3A       		.uleb128 0x3a
+ 894 00a1 0B       		.uleb128 0xb
+ 895 00a2 3B       		.uleb128 0x3b
+ 896 00a3 0B       		.uleb128 0xb
+ 897 00a4 49       		.uleb128 0x49
+ 898 00a5 13       		.uleb128 0x13
+ 899 00a6 02       		.uleb128 0x2
+ 900 00a7 18       		.uleb128 0x18
+ 901 00a8 00       		.byte	0
+ 902 00a9 00       		.byte	0
+ 903 00aa 0D       		.uleb128 0xd
+ 904 00ab 2E       		.uleb128 0x2e
+ 905 00ac 01       		.byte	0x1
+ 906 00ad 3F       		.uleb128 0x3f
+ 907 00ae 19       		.uleb128 0x19
+ 908 00af 03       		.uleb128 0x3
+ 909 00b0 0E       		.uleb128 0xe
+ 910 00b1 3A       		.uleb128 0x3a
+ 911 00b2 0B       		.uleb128 0xb
+ 912 00b3 3B       		.uleb128 0x3b
+ 913 00b4 0B       		.uleb128 0xb
+ 914 00b5 27       		.uleb128 0x27
+ 915 00b6 19       		.uleb128 0x19
+ 916 00b7 49       		.uleb128 0x49
+ 917 00b8 13       		.uleb128 0x13
+ 918 00b9 11       		.uleb128 0x11
+ 919 00ba 01       		.uleb128 0x1
+ 920 00bb 12       		.uleb128 0x12
+ 921 00bc 06       		.uleb128 0x6
+ 922 00bd 40       		.uleb128 0x40
+ 923 00be 18       		.uleb128 0x18
+ 924 00bf 9742     		.uleb128 0x2117
+ 925 00c1 19       		.uleb128 0x19
+ 926 00c2 01       		.uleb128 0x1
+ 927 00c3 13       		.uleb128 0x13
+ 928 00c4 00       		.byte	0
+ 929 00c5 00       		.byte	0
+ 930 00c6 0E       		.uleb128 0xe
+ 931 00c7 2E       		.uleb128 0x2e
+ 932 00c8 01       		.byte	0x1
+ 933 00c9 3F       		.uleb128 0x3f
+ 934 00ca 19       		.uleb128 0x19
+ 935 00cb 03       		.uleb128 0x3
+ 936 00cc 0E       		.uleb128 0xe
+ 937 00cd 3A       		.uleb128 0x3a
+ 938 00ce 0B       		.uleb128 0xb
+ 939 00cf 3B       		.uleb128 0x3b
+ 940 00d0 05       		.uleb128 0x5
+ 941 00d1 27       		.uleb128 0x27
+ 942 00d2 19       		.uleb128 0x19
+ 943 00d3 11       		.uleb128 0x11
+ 944 00d4 01       		.uleb128 0x1
+ 945 00d5 12       		.uleb128 0x12
+ 946 00d6 06       		.uleb128 0x6
+ 947 00d7 40       		.uleb128 0x40
+ 948 00d8 18       		.uleb128 0x18
+ 949 00d9 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 25
+
+
+ 950 00db 19       		.uleb128 0x19
+ 951 00dc 01       		.uleb128 0x1
+ 952 00dd 13       		.uleb128 0x13
+ 953 00de 00       		.byte	0
+ 954 00df 00       		.byte	0
+ 955 00e0 0F       		.uleb128 0xf
+ 956 00e1 05       		.uleb128 0x5
+ 957 00e2 00       		.byte	0
+ 958 00e3 03       		.uleb128 0x3
+ 959 00e4 0E       		.uleb128 0xe
+ 960 00e5 3A       		.uleb128 0x3a
+ 961 00e6 0B       		.uleb128 0xb
+ 962 00e7 3B       		.uleb128 0x3b
+ 963 00e8 05       		.uleb128 0x5
+ 964 00e9 49       		.uleb128 0x49
+ 965 00ea 13       		.uleb128 0x13
+ 966 00eb 02       		.uleb128 0x2
+ 967 00ec 17       		.uleb128 0x17
+ 968 00ed 00       		.byte	0
+ 969 00ee 00       		.byte	0
+ 970 00ef 10       		.uleb128 0x10
+ 971 00f0 2E       		.uleb128 0x2e
+ 972 00f1 01       		.byte	0x1
+ 973 00f2 3F       		.uleb128 0x3f
+ 974 00f3 19       		.uleb128 0x19
+ 975 00f4 03       		.uleb128 0x3
+ 976 00f5 0E       		.uleb128 0xe
+ 977 00f6 3A       		.uleb128 0x3a
+ 978 00f7 0B       		.uleb128 0xb
+ 979 00f8 3B       		.uleb128 0x3b
+ 980 00f9 05       		.uleb128 0x5
+ 981 00fa 27       		.uleb128 0x27
+ 982 00fb 19       		.uleb128 0x19
+ 983 00fc 49       		.uleb128 0x49
+ 984 00fd 13       		.uleb128 0x13
+ 985 00fe 11       		.uleb128 0x11
+ 986 00ff 01       		.uleb128 0x1
+ 987 0100 12       		.uleb128 0x12
+ 988 0101 06       		.uleb128 0x6
+ 989 0102 40       		.uleb128 0x40
+ 990 0103 18       		.uleb128 0x18
+ 991 0104 9742     		.uleb128 0x2117
+ 992 0106 19       		.uleb128 0x19
+ 993 0107 01       		.uleb128 0x1
+ 994 0108 13       		.uleb128 0x13
+ 995 0109 00       		.byte	0
+ 996 010a 00       		.byte	0
+ 997 010b 11       		.uleb128 0x11
+ 998 010c 34       		.uleb128 0x34
+ 999 010d 00       		.byte	0
+ 1000 010e 03       		.uleb128 0x3
+ 1001 010f 0E       		.uleb128 0xe
+ 1002 0110 3A       		.uleb128 0x3a
+ 1003 0111 0B       		.uleb128 0xb
+ 1004 0112 3B       		.uleb128 0x3b
+ 1005 0113 05       		.uleb128 0x5
+ 1006 0114 49       		.uleb128 0x49
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 26
+
+
+ 1007 0115 13       		.uleb128 0x13
+ 1008 0116 02       		.uleb128 0x2
+ 1009 0117 17       		.uleb128 0x17
+ 1010 0118 00       		.byte	0
+ 1011 0119 00       		.byte	0
+ 1012 011a 12       		.uleb128 0x12
+ 1013 011b 2E       		.uleb128 0x2e
+ 1014 011c 00       		.byte	0
+ 1015 011d 3F       		.uleb128 0x3f
+ 1016 011e 19       		.uleb128 0x19
+ 1017 011f 03       		.uleb128 0x3
+ 1018 0120 0E       		.uleb128 0xe
+ 1019 0121 3A       		.uleb128 0x3a
+ 1020 0122 0B       		.uleb128 0xb
+ 1021 0123 3B       		.uleb128 0x3b
+ 1022 0124 05       		.uleb128 0x5
+ 1023 0125 27       		.uleb128 0x27
+ 1024 0126 19       		.uleb128 0x19
+ 1025 0127 11       		.uleb128 0x11
+ 1026 0128 01       		.uleb128 0x1
+ 1027 0129 12       		.uleb128 0x12
+ 1028 012a 06       		.uleb128 0x6
+ 1029 012b 40       		.uleb128 0x40
+ 1030 012c 18       		.uleb128 0x18
+ 1031 012d 9742     		.uleb128 0x2117
+ 1032 012f 19       		.uleb128 0x19
+ 1033 0130 00       		.byte	0
+ 1034 0131 00       		.byte	0
+ 1035 0132 13       		.uleb128 0x13
+ 1036 0133 2E       		.uleb128 0x2e
+ 1037 0134 00       		.byte	0
+ 1038 0135 3F       		.uleb128 0x3f
+ 1039 0136 19       		.uleb128 0x19
+ 1040 0137 03       		.uleb128 0x3
+ 1041 0138 0E       		.uleb128 0xe
+ 1042 0139 3A       		.uleb128 0x3a
+ 1043 013a 0B       		.uleb128 0xb
+ 1044 013b 3B       		.uleb128 0x3b
+ 1045 013c 05       		.uleb128 0x5
+ 1046 013d 27       		.uleb128 0x27
+ 1047 013e 19       		.uleb128 0x19
+ 1048 013f 49       		.uleb128 0x49
+ 1049 0140 13       		.uleb128 0x13
+ 1050 0141 11       		.uleb128 0x11
+ 1051 0142 01       		.uleb128 0x1
+ 1052 0143 12       		.uleb128 0x12
+ 1053 0144 06       		.uleb128 0x6
+ 1054 0145 40       		.uleb128 0x40
+ 1055 0146 18       		.uleb128 0x18
+ 1056 0147 9742     		.uleb128 0x2117
+ 1057 0149 19       		.uleb128 0x19
+ 1058 014a 00       		.byte	0
+ 1059 014b 00       		.byte	0
+ 1060 014c 14       		.uleb128 0x14
+ 1061 014d 898201   		.uleb128 0x4109
+ 1062 0150 00       		.byte	0
+ 1063 0151 11       		.uleb128 0x11
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 27
+
+
+ 1064 0152 01       		.uleb128 0x1
+ 1065 0153 31       		.uleb128 0x31
+ 1066 0154 13       		.uleb128 0x13
+ 1067 0155 00       		.byte	0
+ 1068 0156 00       		.byte	0
+ 1069 0157 15       		.uleb128 0x15
+ 1070 0158 898201   		.uleb128 0x4109
+ 1071 015b 01       		.byte	0x1
+ 1072 015c 11       		.uleb128 0x11
+ 1073 015d 01       		.uleb128 0x1
+ 1074 015e 31       		.uleb128 0x31
+ 1075 015f 13       		.uleb128 0x13
+ 1076 0160 01       		.uleb128 0x1
+ 1077 0161 13       		.uleb128 0x13
+ 1078 0162 00       		.byte	0
+ 1079 0163 00       		.byte	0
+ 1080 0164 16       		.uleb128 0x16
+ 1081 0165 8A8201   		.uleb128 0x410a
+ 1082 0168 00       		.byte	0
+ 1083 0169 02       		.uleb128 0x2
+ 1084 016a 18       		.uleb128 0x18
+ 1085 016b 9142     		.uleb128 0x2111
+ 1086 016d 18       		.uleb128 0x18
+ 1087 016e 00       		.byte	0
+ 1088 016f 00       		.byte	0
+ 1089 0170 17       		.uleb128 0x17
+ 1090 0171 05       		.uleb128 0x5
+ 1091 0172 00       		.byte	0
+ 1092 0173 03       		.uleb128 0x3
+ 1093 0174 0E       		.uleb128 0xe
+ 1094 0175 3A       		.uleb128 0x3a
+ 1095 0176 0B       		.uleb128 0xb
+ 1096 0177 3B       		.uleb128 0x3b
+ 1097 0178 0B       		.uleb128 0xb
+ 1098 0179 49       		.uleb128 0x49
+ 1099 017a 13       		.uleb128 0x13
+ 1100 017b 02       		.uleb128 0x2
+ 1101 017c 17       		.uleb128 0x17
+ 1102 017d 00       		.byte	0
+ 1103 017e 00       		.byte	0
+ 1104 017f 18       		.uleb128 0x18
+ 1105 0180 34       		.uleb128 0x34
+ 1106 0181 00       		.byte	0
+ 1107 0182 03       		.uleb128 0x3
+ 1108 0183 0E       		.uleb128 0xe
+ 1109 0184 3A       		.uleb128 0x3a
+ 1110 0185 0B       		.uleb128 0xb
+ 1111 0186 3B       		.uleb128 0x3b
+ 1112 0187 05       		.uleb128 0x5
+ 1113 0188 49       		.uleb128 0x49
+ 1114 0189 13       		.uleb128 0x13
+ 1115 018a 3F       		.uleb128 0x3f
+ 1116 018b 19       		.uleb128 0x19
+ 1117 018c 3C       		.uleb128 0x3c
+ 1118 018d 19       		.uleb128 0x19
+ 1119 018e 00       		.byte	0
+ 1120 018f 00       		.byte	0
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 28
+
+
+ 1121 0190 00       		.byte	0
+ 1122              		.section	.debug_loc,"",%progbits
+ 1123              	.Ldebug_loc0:
+ 1124              	.LLST0:
+ 1125 0000 00000000 		.4byte	.LVL3
+ 1126 0004 02000000 		.4byte	.LVL4
+ 1127 0008 0100     		.2byte	0x1
+ 1128 000a 50       		.byte	0x50
+ 1129 000b 02000000 		.4byte	.LVL4
+ 1130 000f 10000000 		.4byte	.LFE70
+ 1131 0013 0400     		.2byte	0x4
+ 1132 0015 F3       		.byte	0xf3
+ 1133 0016 01       		.uleb128 0x1
+ 1134 0017 50       		.byte	0x50
+ 1135 0018 9F       		.byte	0x9f
+ 1136 0019 00000000 		.4byte	0
+ 1137 001d 00000000 		.4byte	0
+ 1138              	.LLST1:
+ 1139 0021 04000000 		.4byte	.LVL5
+ 1140 0025 06000000 		.4byte	.LVL6
+ 1141 0029 0500     		.2byte	0x5
+ 1142 002b 70       		.byte	0x70
+ 1143 002c 00       		.sleb128 0
+ 1144 002d 35       		.byte	0x35
+ 1145 002e 25       		.byte	0x25
+ 1146 002f 9F       		.byte	0x9f
+ 1147 0030 00000000 		.4byte	0
+ 1148 0034 00000000 		.4byte	0
+ 1149              	.LLST2:
+ 1150 0038 00000000 		.4byte	.LVL11
+ 1151 003c 07000000 		.4byte	.LVL12-1
+ 1152 0040 0100     		.2byte	0x1
+ 1153 0042 50       		.byte	0x50
+ 1154 0043 07000000 		.4byte	.LVL12-1
+ 1155 0047 1A000000 		.4byte	.LFE65
+ 1156 004b 0100     		.2byte	0x1
+ 1157 004d 54       		.byte	0x54
+ 1158 004e 00000000 		.4byte	0
+ 1159 0052 00000000 		.4byte	0
+ 1160              		.section	.debug_aranges,"",%progbits
+ 1161 0000 7C000000 		.4byte	0x7c
+ 1162 0004 0200     		.2byte	0x2
+ 1163 0006 00000000 		.4byte	.Ldebug_info0
+ 1164 000a 04       		.byte	0x4
+ 1165 000b 00       		.byte	0
+ 1166 000c 0000     		.2byte	0
+ 1167 000e 0000     		.2byte	0
+ 1168 0010 00000000 		.4byte	.LFB67
+ 1169 0014 02000000 		.4byte	.LFE67-.LFB67
+ 1170 0018 00000000 		.4byte	.LFB68
+ 1171 001c 0C000000 		.4byte	.LFE68-.LFB68
+ 1172 0020 00000000 		.4byte	.LFB69
+ 1173 0024 0C000000 		.4byte	.LFE69-.LFB69
+ 1174 0028 00000000 		.4byte	.LFB70
+ 1175 002c 10000000 		.4byte	.LFE70-.LFB70
+ 1176 0030 00000000 		.4byte	.LFB71
+ 1177 0034 0C000000 		.4byte	.LFE71-.LFB71
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 29
+
+
+ 1178 0038 00000000 		.4byte	.LFB72
+ 1179 003c 0C000000 		.4byte	.LFE72-.LFB72
+ 1180 0040 00000000 		.4byte	.LFB73
+ 1181 0044 10000000 		.4byte	.LFE73-.LFB73
+ 1182 0048 00000000 		.4byte	.LFB74
+ 1183 004c 0C000000 		.4byte	.LFE74-.LFB74
+ 1184 0050 00000000 		.4byte	.LFB64
+ 1185 0054 1C000000 		.4byte	.LFE64-.LFB64
+ 1186 0058 00000000 		.4byte	.LFB65
+ 1187 005c 1A000000 		.4byte	.LFE65-.LFB65
+ 1188 0060 00000000 		.4byte	.LFB66
+ 1189 0064 14000000 		.4byte	.LFE66-.LFB66
+ 1190 0068 00000000 		.4byte	.LFB75
+ 1191 006c 0C000000 		.4byte	.LFE75-.LFB75
+ 1192 0070 00000000 		.4byte	.LFB76
+ 1193 0074 0C000000 		.4byte	.LFE76-.LFB76
+ 1194 0078 00000000 		.4byte	0
+ 1195 007c 00000000 		.4byte	0
+ 1196              		.section	.debug_ranges,"",%progbits
+ 1197              	.Ldebug_ranges0:
+ 1198 0000 00000000 		.4byte	.LFB67
+ 1199 0004 02000000 		.4byte	.LFE67
+ 1200 0008 00000000 		.4byte	.LFB68
+ 1201 000c 0C000000 		.4byte	.LFE68
+ 1202 0010 00000000 		.4byte	.LFB69
+ 1203 0014 0C000000 		.4byte	.LFE69
+ 1204 0018 00000000 		.4byte	.LFB70
+ 1205 001c 10000000 		.4byte	.LFE70
+ 1206 0020 00000000 		.4byte	.LFB71
+ 1207 0024 0C000000 		.4byte	.LFE71
+ 1208 0028 00000000 		.4byte	.LFB72
+ 1209 002c 0C000000 		.4byte	.LFE72
+ 1210 0030 00000000 		.4byte	.LFB73
+ 1211 0034 10000000 		.4byte	.LFE73
+ 1212 0038 00000000 		.4byte	.LFB74
+ 1213 003c 0C000000 		.4byte	.LFE74
+ 1214 0040 00000000 		.4byte	.LFB64
+ 1215 0044 1C000000 		.4byte	.LFE64
+ 1216 0048 00000000 		.4byte	.LFB65
+ 1217 004c 1A000000 		.4byte	.LFE65
+ 1218 0050 00000000 		.4byte	.LFB66
+ 1219 0054 14000000 		.4byte	.LFE66
+ 1220 0058 00000000 		.4byte	.LFB75
+ 1221 005c 0C000000 		.4byte	.LFE75
+ 1222 0060 00000000 		.4byte	.LFB76
+ 1223 0064 0C000000 		.4byte	.LFE76
+ 1224 0068 00000000 		.4byte	0
+ 1225 006c 00000000 		.4byte	0
+ 1226              		.section	.debug_line,"",%progbits
+ 1227              	.Ldebug_line0:
+ 1228 0000 3E020000 		.section	.debug_str,"MS",%progbits,1
+ 1228      02005201 
+ 1228      00000201 
+ 1228      FB0E0D00 
+ 1228      01010101 
+ 1229              	.LASF19:
+ 1230 0000 72656733 		.ascii	"reg32\000"
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 30
+
+
+ 1230      3200
+ 1231              	.LASF28:
+ 1232 0006 43686563 		.ascii	"Check_Temp_Interrupt\000"
+ 1232      6B5F5465 
+ 1232      6D705F49 
+ 1232      6E746572 
+ 1232      72757074 
+ 1233              	.LASF12:
+ 1234 001b 5F5F696E 		.ascii	"__int32_t\000"
+ 1234      7433325F 
+ 1234      7400
+ 1235              	.LASF26:
+ 1236 0025 43686563 		.ascii	"Check_Temp_GetVector\000"
+ 1236      6B5F5465 
+ 1236      6D705F47 
+ 1236      65745665 
+ 1236      63746F72 
+ 1237              	.LASF32:
+ 1238 003a 43686563 		.ascii	"Check_Temp_StartEx\000"
+ 1238      6B5F5465 
+ 1238      6D705F53 
+ 1238      74617274 
+ 1238      457800
+ 1239              	.LASF16:
+ 1240 004d 666C6F61 		.ascii	"float\000"
+ 1240      7400
+ 1241              	.LASF39:
+ 1242 0053 43686563 		.ascii	"Check_Temp_GetState\000"
+ 1242      6B5F5465 
+ 1242      6D705F47 
+ 1242      65745374 
+ 1242      61746500 
+ 1243              	.LASF4:
+ 1244 0067 756E7369 		.ascii	"unsigned char\000"
+ 1244      676E6564 
+ 1244      20636861 
+ 1244      7200
+ 1245              	.LASF36:
+ 1246 0075 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1246      43313120 
+ 1246      352E342E 
+ 1246      31203230 
+ 1246      31363036 
+ 1247 00a8 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1247      20726576 
+ 1247      6973696F 
+ 1247      6E203233 
+ 1247      37373135 
+ 1248 00db 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1248      66756E63 
+ 1248      74696F6E 
+ 1248      2D736563 
+ 1248      74696F6E 
+ 1249              	.LASF18:
+ 1250 0103 72656738 		.ascii	"reg8\000"
+ 1250      00
+ 1251              	.LASF30:
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 31
+
+
+ 1252 0108 43686563 		.ascii	"Check_Temp_Disable\000"
+ 1252      6B5F5465 
+ 1252      6D705F44 
+ 1252      69736162 
+ 1252      6C6500
+ 1253              	.LASF8:
+ 1254 011b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1254      20756E73 
+ 1254      69676E65 
+ 1254      6420696E 
+ 1254      7400
+ 1255              	.LASF6:
+ 1256 012d 73686F72 		.ascii	"short unsigned int\000"
+ 1256      7420756E 
+ 1256      7369676E 
+ 1256      65642069 
+ 1256      6E7400
+ 1257              	.LASF38:
+ 1258 0140 433A5C55 		.ascii	"C:\\Users\\Joshua\\Documents\\PSoC Creator\\Workspa"
+ 1258      73657273 
+ 1258      5C4A6F73 
+ 1258      6875615C 
+ 1258      446F6375 
+ 1259 016e 63653031 		.ascii	"ce01\\Design01.cydsn\000"
+ 1259      5C446573 
+ 1259      69676E30 
+ 1259      312E6379 
+ 1259      64736E00 
+ 1260              	.LASF40:
+ 1261 0182 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1261      52784275 
+ 1261      66666572 
+ 1261      00
+ 1262              	.LASF23:
+ 1263 018f 43686563 		.ascii	"Check_Temp_SetPriority\000"
+ 1263      6B5F5465 
+ 1263      6D705F53 
+ 1263      65745072 
+ 1263      696F7269 
+ 1264              	.LASF17:
+ 1265 01a6 646F7562 		.ascii	"double\000"
+ 1265      6C6500
+ 1266              	.LASF35:
+ 1267 01ad 43686563 		.ascii	"Check_Temp_ClearPending\000"
+ 1267      6B5F5465 
+ 1267      6D705F43 
+ 1267      6C656172 
+ 1267      50656E64 
+ 1268              	.LASF37:
+ 1269 01c5 47656E65 		.ascii	"Generated_Source\\PSoC5\\Check_Temp.c\000"
+ 1269      72617465 
+ 1269      645F536F 
+ 1269      75726365 
+ 1269      5C50536F 
+ 1270              	.LASF25:
+ 1271 01e9 7072696F 		.ascii	"priority\000"
+ 1271      72697479 
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 32
+
+
+ 1271      00
+ 1272              	.LASF15:
+ 1273 01f2 75696E74 		.ascii	"uint32\000"
+ 1273      333200
+ 1274              	.LASF0:
+ 1275 01f9 756E7369 		.ascii	"unsigned int\000"
+ 1275      676E6564 
+ 1275      20696E74 
+ 1275      00
+ 1276              	.LASF24:
+ 1277 0206 61646472 		.ascii	"address\000"
+ 1277      65737300 
+ 1278              	.LASF9:
+ 1279 020e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1279      206C6F6E 
+ 1279      6720756E 
+ 1279      7369676E 
+ 1279      65642069 
+ 1280              	.LASF33:
+ 1281 0225 43686563 		.ascii	"Check_Temp_Stop\000"
+ 1281      6B5F5465 
+ 1281      6D705F53 
+ 1281      746F7000 
+ 1282              	.LASF20:
+ 1283 0235 63796973 		.ascii	"cyisraddress\000"
+ 1283      72616464 
+ 1283      72657373 
+ 1283      00
+ 1284              	.LASF22:
+ 1285 0242 43686563 		.ascii	"Check_Temp_SetVector\000"
+ 1285      6B5F5465 
+ 1285      6D705F53 
+ 1285      65745665 
+ 1285      63746F72 
+ 1286              	.LASF29:
+ 1287 0257 43686563 		.ascii	"Check_Temp_Enable\000"
+ 1287      6B5F5465 
+ 1287      6D705F45 
+ 1287      6E61626C 
+ 1287      6500
+ 1288              	.LASF13:
+ 1289 0269 696E7433 		.ascii	"int32_t\000"
+ 1289      325F7400 
+ 1290              	.LASF10:
+ 1291 0271 73697A65 		.ascii	"sizetype\000"
+ 1291      74797065 
+ 1291      00
+ 1292              	.LASF34:
+ 1293 027a 43686563 		.ascii	"Check_Temp_SetPending\000"
+ 1293      6B5F5465 
+ 1293      6D705F53 
+ 1293      65745065 
+ 1293      6E64696E 
+ 1294              	.LASF1:
+ 1295 0290 6C6F6E67 		.ascii	"long long int\000"
+ 1295      206C6F6E 
+ 1295      6720696E 
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cceSkfzH.s 			page 33
+
+
+ 1295      7400
+ 1296              	.LASF11:
+ 1297 029e 63686172 		.ascii	"char\000"
+ 1297      00
+ 1298              	.LASF21:
+ 1299 02a3 72616D56 		.ascii	"ramVectorTable\000"
+ 1299      6563746F 
+ 1299      72546162 
+ 1299      6C6500
+ 1300              	.LASF27:
+ 1301 02b2 43686563 		.ascii	"Check_Temp_GetPriority\000"
+ 1301      6B5F5465 
+ 1301      6D705F47 
+ 1301      65745072 
+ 1301      696F7269 
+ 1302              	.LASF5:
+ 1303 02c9 73686F72 		.ascii	"short int\000"
+ 1303      7420696E 
+ 1303      7400
+ 1304              	.LASF14:
+ 1305 02d3 75696E74 		.ascii	"uint8\000"
+ 1305      3800
+ 1306              	.LASF7:
+ 1307 02d9 6C6F6E67 		.ascii	"long int\000"
+ 1307      20696E74 
+ 1307      00
+ 1308              	.LASF2:
+ 1309 02e2 6C6F6E67 		.ascii	"long double\000"
+ 1309      20646F75 
+ 1309      626C6500 
+ 1310              	.LASF3:
+ 1311 02ee 7369676E 		.ascii	"signed char\000"
+ 1311      65642063 
+ 1311      68617200 
+ 1312              	.LASF31:
+ 1313 02fa 43686563 		.ascii	"Check_Temp_Start\000"
+ 1313      6B5F5465 
+ 1313      6D705F53 
+ 1313      74617274 
+ 1313      00
+ 1314              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

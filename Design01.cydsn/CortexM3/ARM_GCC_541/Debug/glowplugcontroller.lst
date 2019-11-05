@@ -1,0 +1,930 @@
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"glowplugcontroller.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Glowglowplugs,"ax",%progbits
+  20              		.align	2
+  21              		.global	Glowglowplugs
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Glowglowplugs, %function
+  25              	Glowglowplugs:
+  26              	.LFB64:
+  27              		.file 1 "glowplugcontroller.c"
+   1:glowplugcontroller.c **** /* ========================================
+   2:glowplugcontroller.c ****  *
+   3:glowplugcontroller.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:glowplugcontroller.c ****  * All Rights Reserved
+   5:glowplugcontroller.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:glowplugcontroller.c ****  *
+   7:glowplugcontroller.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:glowplugcontroller.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:glowplugcontroller.c ****  *
+  10:glowplugcontroller.c ****  * ========================================
+  11:glowplugcontroller.c **** */
+  12:glowplugcontroller.c **** 
+  13:glowplugcontroller.c **** #include <macros.h>
+  14:glowplugcontroller.c **** // need to check if it is running 
+  15:glowplugcontroller.c **** 	void Glowglowplugs(int which_cycle){
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  16:glowplugcontroller.c ****         extern volatile int Not_runing;
+  17:glowplugcontroller.c ****         extern volatile int cycles;
+  18:glowplugcontroller.c ****         extern volatile int RPM_Count;
+  19:glowplugcontroller.c ****     switch (which_cycle){
+  37              		.loc 1 19 0
+  38 0002 0228     		cmp	r0, #2
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 2
+
+
+  39 0004 1BD0     		beq	.L3
+  40 0006 0328     		cmp	r0, #3
+  41 0008 34D0     		beq	.L4
+  42 000a 0128     		cmp	r0, #1
+  43 000c 35D1     		bne	.L1
+  20:glowplugcontroller.c ****     case fullplusafter:
+  21:glowplugcontroller.c ****         if(Not_Runing==1){
+  22:glowplugcontroller.c ****         Glow_Plug_pin_Write(high);//writes pin high to energize the glow plug relay
+  44              		.loc 1 22 0
+  45 000e FFF7FEFF 		bl	Glow_Plug_pin_Write
+  46              	.LVL1:
+  23:glowplugcontroller.c ****         Glow_plug_indicator_Write(high);//writes the pin high to energize the relay
+  47              		.loc 1 23 0
+  48 0012 0120     		movs	r0, #1
+  49 0014 FFF7FEFF 		bl	Glow_plug_indicator_Write
+  50              	.LVL2:
+  24:glowplugcontroller.c ****         CyDelay(23000);     // waits 35 sec
+  51              		.loc 1 24 0
+  52 0018 45F6D810 		movw	r0, #23000
+  53 001c FFF7FEFF 		bl	CyDelay
+  54              	.LVL3:
+  25:glowplugcontroller.c ****         Glow_Plug_pin_Write(low);  // turns off the relay
+  55              		.loc 1 25 0
+  56 0020 0020     		movs	r0, #0
+  57 0022 FFF7FEFF 		bl	Glow_Plug_pin_Write
+  58              	.LVL4:
+  26:glowplugcontroller.c ****         cycles=1;
+  59              		.loc 1 26 0
+  60 0026 0120     		movs	r0, #1
+  61 0028 144B     		ldr	r3, .L8
+  62 002a 1860     		str	r0, [r3]
+  27:glowplugcontroller.c ****         }
+  28:glowplugcontroller.c ****         Battery_interlock_Write(high);
+  63              		.loc 1 28 0
+  64 002c FFF7FEFF 		bl	Battery_interlock_Write
+  65              	.LVL5:
+  29:glowplugcontroller.c ****         Glow_Plug_pin_Write(low);
+  66              		.loc 1 29 0
+  67 0030 0020     		movs	r0, #0
+  68 0032 FFF7FEFF 		bl	Glow_Plug_pin_Write
+  69              	.LVL6:
+  30:glowplugcontroller.c ****         Glow_plug_indicator_Write(low);// turns off the relay that controls the dash light 
+  70              		.loc 1 30 0
+  71 0036 0020     		movs	r0, #0
+  72 0038 FFF7FEFF 		bl	Glow_plug_indicator_Write
+  73              	.LVL7:
+  31:glowplugcontroller.c ****         
+  32:glowplugcontroller.c ****         break;
+  74              		.loc 1 32 0
+  75 003c 08BD     		pop	{r3, pc}
+  76              	.LVL8:
+  77              	.L3:
+  33:glowplugcontroller.c ****          
+  34:glowplugcontroller.c ****     case half:
+  35:glowplugcontroller.c ****         if(Not_runing==1){
+  78              		.loc 1 35 0
+  79 003e 104B     		ldr	r3, .L8+4
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 3
+
+
+  80 0040 1B68     		ldr	r3, [r3]
+  81 0042 012B     		cmp	r3, #1
+  82 0044 12D1     		bne	.L6
+  36:glowplugcontroller.c ****         Glow_plug_indicator_Write(high);    
+  83              		.loc 1 36 0
+  84 0046 0120     		movs	r0, #1
+  85              	.LVL9:
+  86 0048 FFF7FEFF 		bl	Glow_plug_indicator_Write
+  87              	.LVL10:
+  37:glowplugcontroller.c ****         Glow_Plug_pin_Write(high);
+  88              		.loc 1 37 0
+  89 004c 0120     		movs	r0, #1
+  90 004e FFF7FEFF 		bl	Glow_Plug_pin_Write
+  91              	.LVL11:
+  38:glowplugcontroller.c ****         CyDelay(15000);     // 20 secs for warm engine
+  92              		.loc 1 38 0
+  93 0052 43F69820 		movw	r0, #15000
+  94 0056 FFF7FEFF 		bl	CyDelay
+  95              	.LVL12:
+  39:glowplugcontroller.c ****         Glow_Plug_pin_Write(low);
+  96              		.loc 1 39 0
+  97 005a 0020     		movs	r0, #0
+  98 005c FFF7FEFF 		bl	Glow_Plug_pin_Write
+  99              	.LVL13:
+  40:glowplugcontroller.c ****         Glow_plug_indicator_Write(low);
+ 100              		.loc 1 40 0
+ 101 0060 0020     		movs	r0, #0
+ 102 0062 FFF7FEFF 		bl	Glow_plug_indicator_Write
+ 103              	.LVL14:
+  41:glowplugcontroller.c ****         cycles=1;
+ 104              		.loc 1 41 0
+ 105 0066 0122     		movs	r2, #1
+ 106 0068 044B     		ldr	r3, .L8
+ 107 006a 1A60     		str	r2, [r3]
+ 108              	.L6:
+  42:glowplugcontroller.c ****         }
+  43:glowplugcontroller.c ****        
+  44:glowplugcontroller.c ****         Battery_interlock_Write(high);
+ 109              		.loc 1 44 0
+ 110 006c 0120     		movs	r0, #1
+ 111 006e FFF7FEFF 		bl	Battery_interlock_Write
+ 112              	.LVL15:
+  45:glowplugcontroller.c ****         break;
+ 113              		.loc 1 45 0
+ 114 0072 08BD     		pop	{r3, pc}
+ 115              	.LVL16:
+ 116              	.L4:
+  46:glowplugcontroller.c ****         
+  47:glowplugcontroller.c ****     case NONE:
+  48:glowplugcontroller.c ****         Battery_interlock_Write(high);
+ 117              		.loc 1 48 0
+ 118 0074 0120     		movs	r0, #1
+ 119              	.LVL17:
+ 120 0076 FFF7FEFF 		bl	Battery_interlock_Write
+ 121              	.LVL18:
+ 122              	.L1:
+ 123 007a 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 4
+
+
+ 124              	.L9:
+ 125              		.align	2
+ 126              	.L8:
+ 127 007c 00000000 		.word	cycles
+ 128 0080 00000000 		.word	Not_runing
+ 129              		.cfi_endproc
+ 130              	.LFE64:
+ 131              		.size	Glowglowplugs, .-Glowglowplugs
+ 132              		.text
+ 133              	.Letext0:
+ 134              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 135              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 136              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 137              		.file 5 "Generated_Source\\PSoC5/Glow_Plug_pin.h"
+ 138              		.file 6 "Generated_Source\\PSoC5/Glow_plug_indicator.h"
+ 139              		.file 7 "Generated_Source\\PSoC5/CyLib.h"
+ 140              		.file 8 "Generated_Source\\PSoC5/Battery_interlock.h"
+ 141              		.section	.debug_info,"",%progbits
+ 142              	.Ldebug_info0:
+ 143 0000 4B020000 		.4byte	0x24b
+ 144 0004 0400     		.2byte	0x4
+ 145 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 146 000a 04       		.byte	0x4
+ 147 000b 01       		.uleb128 0x1
+ 148 000c 4A000000 		.4byte	.LASF24
+ 149 0010 0C       		.byte	0xc
+ 150 0011 45010000 		.4byte	.LASF25
+ 151 0015 76010000 		.4byte	.LASF26
+ 152 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 153 001d 00000000 		.4byte	0
+ 154 0021 00000000 		.4byte	.Ldebug_line0
+ 155 0025 02       		.uleb128 0x2
+ 156 0026 01       		.byte	0x1
+ 157 0027 06       		.byte	0x6
+ 158 0028 E6010000 		.4byte	.LASF0
+ 159 002c 02       		.uleb128 0x2
+ 160 002d 01       		.byte	0x1
+ 161 002e 08       		.byte	0x8
+ 162 002f 37010000 		.4byte	.LASF1
+ 163 0033 02       		.uleb128 0x2
+ 164 0034 02       		.byte	0x2
+ 165 0035 05       		.byte	0x5
+ 166 0036 18020000 		.4byte	.LASF2
+ 167 003a 02       		.uleb128 0x2
+ 168 003b 02       		.byte	0x2
+ 169 003c 07       		.byte	0x7
+ 170 003d 10010000 		.4byte	.LASF3
+ 171 0041 03       		.uleb128 0x3
+ 172 0042 FE010000 		.4byte	.LASF9
+ 173 0046 02       		.byte	0x2
+ 174 0047 3F       		.byte	0x3f
+ 175 0048 4C000000 		.4byte	0x4c
+ 176 004c 02       		.uleb128 0x2
+ 177 004d 04       		.byte	0x4
+ 178 004e 05       		.byte	0x5
+ 179 004f 5F010000 		.4byte	.LASF4
+ 180 0053 02       		.uleb128 0x2
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 5
+
+
+ 181 0054 04       		.byte	0x4
+ 182 0055 07       		.byte	0x7
+ 183 0056 E0000000 		.4byte	.LASF5
+ 184 005a 02       		.uleb128 0x2
+ 185 005b 08       		.byte	0x8
+ 186 005c 05       		.byte	0x5
+ 187 005d 00000000 		.4byte	.LASF6
+ 188 0061 02       		.uleb128 0x2
+ 189 0062 08       		.byte	0x8
+ 190 0063 07       		.byte	0x7
+ 191 0064 F2000000 		.4byte	.LASF7
+ 192 0068 04       		.uleb128 0x4
+ 193 0069 04       		.byte	0x4
+ 194 006a 05       		.byte	0x5
+ 195 006b 696E7400 		.ascii	"int\000"
+ 196 006f 02       		.uleb128 0x2
+ 197 0070 04       		.byte	0x4
+ 198 0071 07       		.byte	0x7
+ 199 0072 26000000 		.4byte	.LASF8
+ 200 0076 03       		.uleb128 0x3
+ 201 0077 22020000 		.4byte	.LASF10
+ 202 007b 03       		.byte	0x3
+ 203 007c 2C       		.byte	0x2c
+ 204 007d 41000000 		.4byte	0x41
+ 205 0081 02       		.uleb128 0x2
+ 206 0082 04       		.byte	0x4
+ 207 0083 04       		.byte	0x4
+ 208 0084 08020000 		.4byte	.LASF11
+ 209 0088 02       		.uleb128 0x2
+ 210 0089 08       		.byte	0x8
+ 211 008a 04       		.byte	0x4
+ 212 008b D2010000 		.4byte	.LASF12
+ 213 008f 02       		.uleb128 0x2
+ 214 0090 01       		.byte	0x1
+ 215 0091 08       		.byte	0x8
+ 216 0092 5A010000 		.4byte	.LASF13
+ 217 0096 02       		.uleb128 0x2
+ 218 0097 08       		.byte	0x8
+ 219 0098 04       		.byte	0x4
+ 220 0099 F2010000 		.4byte	.LASF14
+ 221 009d 02       		.uleb128 0x2
+ 222 009e 04       		.byte	0x4
+ 223 009f 07       		.byte	0x7
+ 224 00a0 2A020000 		.4byte	.LASF15
+ 225 00a4 05       		.uleb128 0x5
+ 226 00a5 68010000 		.4byte	.LASF27
+ 227 00a9 01       		.byte	0x1
+ 228 00aa 0F       		.byte	0xf
+ 229 00ab 00000000 		.4byte	.LFB64
+ 230 00af 84000000 		.4byte	.LFE64-.LFB64
+ 231 00b3 01       		.uleb128 0x1
+ 232 00b4 9C       		.byte	0x9c
+ 233 00b5 F6010000 		.4byte	0x1f6
+ 234 00b9 06       		.uleb128 0x6
+ 235 00ba 3E000000 		.4byte	.LASF28
+ 236 00be 01       		.byte	0x1
+ 237 00bf 0F       		.byte	0xf
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 6
+
+
+ 238 00c0 68000000 		.4byte	0x68
+ 239 00c4 00000000 		.4byte	.LLST0
+ 240 00c8 07       		.uleb128 0x7
+ 241 00c9 33000000 		.4byte	.LASF16
+ 242 00cd 01       		.byte	0x1
+ 243 00ce 10       		.byte	0x10
+ 244 00cf F6010000 		.4byte	0x1f6
+ 245 00d3 07       		.uleb128 0x7
+ 246 00d4 09010000 		.4byte	.LASF17
+ 247 00d8 01       		.byte	0x1
+ 248 00d9 11       		.byte	0x11
+ 249 00da F6010000 		.4byte	0x1f6
+ 250 00de 07       		.uleb128 0x7
+ 251 00df 0E020000 		.4byte	.LASF18
+ 252 00e3 01       		.byte	0x1
+ 253 00e4 12       		.byte	0x12
+ 254 00e5 F6010000 		.4byte	0x1f6
+ 255 00e9 08       		.uleb128 0x8
+ 256 00ea 12000000 		.4byte	.LVL1
+ 257 00ee 22020000 		.4byte	0x222
+ 258 00f2 FE000000 		.4byte	0xfe
+ 259 00f6 09       		.uleb128 0x9
+ 260 00f7 01       		.uleb128 0x1
+ 261 00f8 50       		.byte	0x50
+ 262 00f9 03       		.uleb128 0x3
+ 263 00fa F3       		.byte	0xf3
+ 264 00fb 01       		.uleb128 0x1
+ 265 00fc 50       		.byte	0x50
+ 266 00fd 00       		.byte	0
+ 267 00fe 08       		.uleb128 0x8
+ 268 00ff 18000000 		.4byte	.LVL2
+ 269 0103 2D020000 		.4byte	0x22d
+ 270 0107 11010000 		.4byte	0x111
+ 271 010b 09       		.uleb128 0x9
+ 272 010c 01       		.uleb128 0x1
+ 273 010d 50       		.byte	0x50
+ 274 010e 01       		.uleb128 0x1
+ 275 010f 31       		.byte	0x31
+ 276 0110 00       		.byte	0
+ 277 0111 08       		.uleb128 0x8
+ 278 0112 20000000 		.4byte	.LVL3
+ 279 0116 38020000 		.4byte	0x238
+ 280 011a 26010000 		.4byte	0x126
+ 281 011e 09       		.uleb128 0x9
+ 282 011f 01       		.uleb128 0x1
+ 283 0120 50       		.byte	0x50
+ 284 0121 03       		.uleb128 0x3
+ 285 0122 0A       		.byte	0xa
+ 286 0123 D859     		.2byte	0x59d8
+ 287 0125 00       		.byte	0
+ 288 0126 08       		.uleb128 0x8
+ 289 0127 26000000 		.4byte	.LVL4
+ 290 012b 22020000 		.4byte	0x222
+ 291 012f 39010000 		.4byte	0x139
+ 292 0133 09       		.uleb128 0x9
+ 293 0134 01       		.uleb128 0x1
+ 294 0135 50       		.byte	0x50
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 7
+
+
+ 295 0136 01       		.uleb128 0x1
+ 296 0137 30       		.byte	0x30
+ 297 0138 00       		.byte	0
+ 298 0139 08       		.uleb128 0x8
+ 299 013a 30000000 		.4byte	.LVL5
+ 300 013e 43020000 		.4byte	0x243
+ 301 0142 4C010000 		.4byte	0x14c
+ 302 0146 09       		.uleb128 0x9
+ 303 0147 01       		.uleb128 0x1
+ 304 0148 50       		.byte	0x50
+ 305 0149 01       		.uleb128 0x1
+ 306 014a 31       		.byte	0x31
+ 307 014b 00       		.byte	0
+ 308 014c 08       		.uleb128 0x8
+ 309 014d 36000000 		.4byte	.LVL6
+ 310 0151 22020000 		.4byte	0x222
+ 311 0155 5F010000 		.4byte	0x15f
+ 312 0159 09       		.uleb128 0x9
+ 313 015a 01       		.uleb128 0x1
+ 314 015b 50       		.byte	0x50
+ 315 015c 01       		.uleb128 0x1
+ 316 015d 30       		.byte	0x30
+ 317 015e 00       		.byte	0
+ 318 015f 08       		.uleb128 0x8
+ 319 0160 3C000000 		.4byte	.LVL7
+ 320 0164 2D020000 		.4byte	0x22d
+ 321 0168 72010000 		.4byte	0x172
+ 322 016c 09       		.uleb128 0x9
+ 323 016d 01       		.uleb128 0x1
+ 324 016e 50       		.byte	0x50
+ 325 016f 01       		.uleb128 0x1
+ 326 0170 30       		.byte	0x30
+ 327 0171 00       		.byte	0
+ 328 0172 08       		.uleb128 0x8
+ 329 0173 4C000000 		.4byte	.LVL10
+ 330 0177 2D020000 		.4byte	0x22d
+ 331 017b 85010000 		.4byte	0x185
+ 332 017f 09       		.uleb128 0x9
+ 333 0180 01       		.uleb128 0x1
+ 334 0181 50       		.byte	0x50
+ 335 0182 01       		.uleb128 0x1
+ 336 0183 31       		.byte	0x31
+ 337 0184 00       		.byte	0
+ 338 0185 08       		.uleb128 0x8
+ 339 0186 52000000 		.4byte	.LVL11
+ 340 018a 22020000 		.4byte	0x222
+ 341 018e 98010000 		.4byte	0x198
+ 342 0192 09       		.uleb128 0x9
+ 343 0193 01       		.uleb128 0x1
+ 344 0194 50       		.byte	0x50
+ 345 0195 01       		.uleb128 0x1
+ 346 0196 31       		.byte	0x31
+ 347 0197 00       		.byte	0
+ 348 0198 08       		.uleb128 0x8
+ 349 0199 5A000000 		.4byte	.LVL12
+ 350 019d 38020000 		.4byte	0x238
+ 351 01a1 AD010000 		.4byte	0x1ad
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 8
+
+
+ 352 01a5 09       		.uleb128 0x9
+ 353 01a6 01       		.uleb128 0x1
+ 354 01a7 50       		.byte	0x50
+ 355 01a8 03       		.uleb128 0x3
+ 356 01a9 0A       		.byte	0xa
+ 357 01aa 983A     		.2byte	0x3a98
+ 358 01ac 00       		.byte	0
+ 359 01ad 08       		.uleb128 0x8
+ 360 01ae 60000000 		.4byte	.LVL13
+ 361 01b2 22020000 		.4byte	0x222
+ 362 01b6 C0010000 		.4byte	0x1c0
+ 363 01ba 09       		.uleb128 0x9
+ 364 01bb 01       		.uleb128 0x1
+ 365 01bc 50       		.byte	0x50
+ 366 01bd 01       		.uleb128 0x1
+ 367 01be 30       		.byte	0x30
+ 368 01bf 00       		.byte	0
+ 369 01c0 08       		.uleb128 0x8
+ 370 01c1 66000000 		.4byte	.LVL14
+ 371 01c5 2D020000 		.4byte	0x22d
+ 372 01c9 D3010000 		.4byte	0x1d3
+ 373 01cd 09       		.uleb128 0x9
+ 374 01ce 01       		.uleb128 0x1
+ 375 01cf 50       		.byte	0x50
+ 376 01d0 01       		.uleb128 0x1
+ 377 01d1 30       		.byte	0x30
+ 378 01d2 00       		.byte	0
+ 379 01d3 08       		.uleb128 0x8
+ 380 01d4 72000000 		.4byte	.LVL15
+ 381 01d8 43020000 		.4byte	0x243
+ 382 01dc E6010000 		.4byte	0x1e6
+ 383 01e0 09       		.uleb128 0x9
+ 384 01e1 01       		.uleb128 0x1
+ 385 01e2 50       		.byte	0x50
+ 386 01e3 01       		.uleb128 0x1
+ 387 01e4 31       		.byte	0x31
+ 388 01e5 00       		.byte	0
+ 389 01e6 0A       		.uleb128 0xa
+ 390 01e7 7A000000 		.4byte	.LVL18
+ 391 01eb 43020000 		.4byte	0x243
+ 392 01ef 09       		.uleb128 0x9
+ 393 01f0 01       		.uleb128 0x1
+ 394 01f1 50       		.byte	0x50
+ 395 01f2 01       		.uleb128 0x1
+ 396 01f3 31       		.byte	0x31
+ 397 01f4 00       		.byte	0
+ 398 01f5 00       		.byte	0
+ 399 01f6 0B       		.uleb128 0xb
+ 400 01f7 68000000 		.4byte	0x68
+ 401 01fb 0C       		.uleb128 0xc
+ 402 01fc D9010000 		.4byte	.LASF19
+ 403 0200 04       		.byte	0x4
+ 404 0201 1207     		.2byte	0x712
+ 405 0203 07020000 		.4byte	0x207
+ 406 0207 0B       		.uleb128 0xb
+ 407 0208 76000000 		.4byte	0x76
+ 408 020c 07       		.uleb128 0x7
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 9
+
+
+ 409 020d 33000000 		.4byte	.LASF16
+ 410 0211 01       		.byte	0x1
+ 411 0212 10       		.byte	0x10
+ 412 0213 F6010000 		.4byte	0x1f6
+ 413 0217 07       		.uleb128 0x7
+ 414 0218 09010000 		.4byte	.LASF17
+ 415 021c 01       		.byte	0x1
+ 416 021d 11       		.byte	0x11
+ 417 021e F6010000 		.4byte	0x1f6
+ 418 0222 0D       		.uleb128 0xd
+ 419 0223 23010000 		.4byte	.LASF20
+ 420 0227 23010000 		.4byte	.LASF20
+ 421 022b 05       		.byte	0x5
+ 422 022c 26       		.byte	0x26
+ 423 022d 0D       		.uleb128 0xd
+ 424 022e B8010000 		.4byte	.LASF21
+ 425 0232 B8010000 		.4byte	.LASF21
+ 426 0236 06       		.byte	0x6
+ 427 0237 26       		.byte	0x26
+ 428 0238 0D       		.uleb128 0xd
+ 429 0239 D8000000 		.4byte	.LASF22
+ 430 023d D8000000 		.4byte	.LASF22
+ 431 0241 07       		.byte	0x7
+ 432 0242 76       		.byte	0x76
+ 433 0243 0D       		.uleb128 0xd
+ 434 0244 0E000000 		.4byte	.LASF23
+ 435 0248 0E000000 		.4byte	.LASF23
+ 436 024c 08       		.byte	0x8
+ 437 024d 26       		.byte	0x26
+ 438 024e 00       		.byte	0
+ 439              		.section	.debug_abbrev,"",%progbits
+ 440              	.Ldebug_abbrev0:
+ 441 0000 01       		.uleb128 0x1
+ 442 0001 11       		.uleb128 0x11
+ 443 0002 01       		.byte	0x1
+ 444 0003 25       		.uleb128 0x25
+ 445 0004 0E       		.uleb128 0xe
+ 446 0005 13       		.uleb128 0x13
+ 447 0006 0B       		.uleb128 0xb
+ 448 0007 03       		.uleb128 0x3
+ 449 0008 0E       		.uleb128 0xe
+ 450 0009 1B       		.uleb128 0x1b
+ 451 000a 0E       		.uleb128 0xe
+ 452 000b 55       		.uleb128 0x55
+ 453 000c 17       		.uleb128 0x17
+ 454 000d 11       		.uleb128 0x11
+ 455 000e 01       		.uleb128 0x1
+ 456 000f 10       		.uleb128 0x10
+ 457 0010 17       		.uleb128 0x17
+ 458 0011 00       		.byte	0
+ 459 0012 00       		.byte	0
+ 460 0013 02       		.uleb128 0x2
+ 461 0014 24       		.uleb128 0x24
+ 462 0015 00       		.byte	0
+ 463 0016 0B       		.uleb128 0xb
+ 464 0017 0B       		.uleb128 0xb
+ 465 0018 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 10
+
+
+ 466 0019 0B       		.uleb128 0xb
+ 467 001a 03       		.uleb128 0x3
+ 468 001b 0E       		.uleb128 0xe
+ 469 001c 00       		.byte	0
+ 470 001d 00       		.byte	0
+ 471 001e 03       		.uleb128 0x3
+ 472 001f 16       		.uleb128 0x16
+ 473 0020 00       		.byte	0
+ 474 0021 03       		.uleb128 0x3
+ 475 0022 0E       		.uleb128 0xe
+ 476 0023 3A       		.uleb128 0x3a
+ 477 0024 0B       		.uleb128 0xb
+ 478 0025 3B       		.uleb128 0x3b
+ 479 0026 0B       		.uleb128 0xb
+ 480 0027 49       		.uleb128 0x49
+ 481 0028 13       		.uleb128 0x13
+ 482 0029 00       		.byte	0
+ 483 002a 00       		.byte	0
+ 484 002b 04       		.uleb128 0x4
+ 485 002c 24       		.uleb128 0x24
+ 486 002d 00       		.byte	0
+ 487 002e 0B       		.uleb128 0xb
+ 488 002f 0B       		.uleb128 0xb
+ 489 0030 3E       		.uleb128 0x3e
+ 490 0031 0B       		.uleb128 0xb
+ 491 0032 03       		.uleb128 0x3
+ 492 0033 08       		.uleb128 0x8
+ 493 0034 00       		.byte	0
+ 494 0035 00       		.byte	0
+ 495 0036 05       		.uleb128 0x5
+ 496 0037 2E       		.uleb128 0x2e
+ 497 0038 01       		.byte	0x1
+ 498 0039 3F       		.uleb128 0x3f
+ 499 003a 19       		.uleb128 0x19
+ 500 003b 03       		.uleb128 0x3
+ 501 003c 0E       		.uleb128 0xe
+ 502 003d 3A       		.uleb128 0x3a
+ 503 003e 0B       		.uleb128 0xb
+ 504 003f 3B       		.uleb128 0x3b
+ 505 0040 0B       		.uleb128 0xb
+ 506 0041 27       		.uleb128 0x27
+ 507 0042 19       		.uleb128 0x19
+ 508 0043 11       		.uleb128 0x11
+ 509 0044 01       		.uleb128 0x1
+ 510 0045 12       		.uleb128 0x12
+ 511 0046 06       		.uleb128 0x6
+ 512 0047 40       		.uleb128 0x40
+ 513 0048 18       		.uleb128 0x18
+ 514 0049 9742     		.uleb128 0x2117
+ 515 004b 19       		.uleb128 0x19
+ 516 004c 01       		.uleb128 0x1
+ 517 004d 13       		.uleb128 0x13
+ 518 004e 00       		.byte	0
+ 519 004f 00       		.byte	0
+ 520 0050 06       		.uleb128 0x6
+ 521 0051 05       		.uleb128 0x5
+ 522 0052 00       		.byte	0
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 11
+
+
+ 523 0053 03       		.uleb128 0x3
+ 524 0054 0E       		.uleb128 0xe
+ 525 0055 3A       		.uleb128 0x3a
+ 526 0056 0B       		.uleb128 0xb
+ 527 0057 3B       		.uleb128 0x3b
+ 528 0058 0B       		.uleb128 0xb
+ 529 0059 49       		.uleb128 0x49
+ 530 005a 13       		.uleb128 0x13
+ 531 005b 02       		.uleb128 0x2
+ 532 005c 17       		.uleb128 0x17
+ 533 005d 00       		.byte	0
+ 534 005e 00       		.byte	0
+ 535 005f 07       		.uleb128 0x7
+ 536 0060 34       		.uleb128 0x34
+ 537 0061 00       		.byte	0
+ 538 0062 03       		.uleb128 0x3
+ 539 0063 0E       		.uleb128 0xe
+ 540 0064 3A       		.uleb128 0x3a
+ 541 0065 0B       		.uleb128 0xb
+ 542 0066 3B       		.uleb128 0x3b
+ 543 0067 0B       		.uleb128 0xb
+ 544 0068 49       		.uleb128 0x49
+ 545 0069 13       		.uleb128 0x13
+ 546 006a 3F       		.uleb128 0x3f
+ 547 006b 19       		.uleb128 0x19
+ 548 006c 3C       		.uleb128 0x3c
+ 549 006d 19       		.uleb128 0x19
+ 550 006e 00       		.byte	0
+ 551 006f 00       		.byte	0
+ 552 0070 08       		.uleb128 0x8
+ 553 0071 898201   		.uleb128 0x4109
+ 554 0074 01       		.byte	0x1
+ 555 0075 11       		.uleb128 0x11
+ 556 0076 01       		.uleb128 0x1
+ 557 0077 31       		.uleb128 0x31
+ 558 0078 13       		.uleb128 0x13
+ 559 0079 01       		.uleb128 0x1
+ 560 007a 13       		.uleb128 0x13
+ 561 007b 00       		.byte	0
+ 562 007c 00       		.byte	0
+ 563 007d 09       		.uleb128 0x9
+ 564 007e 8A8201   		.uleb128 0x410a
+ 565 0081 00       		.byte	0
+ 566 0082 02       		.uleb128 0x2
+ 567 0083 18       		.uleb128 0x18
+ 568 0084 9142     		.uleb128 0x2111
+ 569 0086 18       		.uleb128 0x18
+ 570 0087 00       		.byte	0
+ 571 0088 00       		.byte	0
+ 572 0089 0A       		.uleb128 0xa
+ 573 008a 898201   		.uleb128 0x4109
+ 574 008d 01       		.byte	0x1
+ 575 008e 11       		.uleb128 0x11
+ 576 008f 01       		.uleb128 0x1
+ 577 0090 31       		.uleb128 0x31
+ 578 0091 13       		.uleb128 0x13
+ 579 0092 00       		.byte	0
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 12
+
+
+ 580 0093 00       		.byte	0
+ 581 0094 0B       		.uleb128 0xb
+ 582 0095 35       		.uleb128 0x35
+ 583 0096 00       		.byte	0
+ 584 0097 49       		.uleb128 0x49
+ 585 0098 13       		.uleb128 0x13
+ 586 0099 00       		.byte	0
+ 587 009a 00       		.byte	0
+ 588 009b 0C       		.uleb128 0xc
+ 589 009c 34       		.uleb128 0x34
+ 590 009d 00       		.byte	0
+ 591 009e 03       		.uleb128 0x3
+ 592 009f 0E       		.uleb128 0xe
+ 593 00a0 3A       		.uleb128 0x3a
+ 594 00a1 0B       		.uleb128 0xb
+ 595 00a2 3B       		.uleb128 0x3b
+ 596 00a3 05       		.uleb128 0x5
+ 597 00a4 49       		.uleb128 0x49
+ 598 00a5 13       		.uleb128 0x13
+ 599 00a6 3F       		.uleb128 0x3f
+ 600 00a7 19       		.uleb128 0x19
+ 601 00a8 3C       		.uleb128 0x3c
+ 602 00a9 19       		.uleb128 0x19
+ 603 00aa 00       		.byte	0
+ 604 00ab 00       		.byte	0
+ 605 00ac 0D       		.uleb128 0xd
+ 606 00ad 2E       		.uleb128 0x2e
+ 607 00ae 00       		.byte	0
+ 608 00af 3F       		.uleb128 0x3f
+ 609 00b0 19       		.uleb128 0x19
+ 610 00b1 3C       		.uleb128 0x3c
+ 611 00b2 19       		.uleb128 0x19
+ 612 00b3 6E       		.uleb128 0x6e
+ 613 00b4 0E       		.uleb128 0xe
+ 614 00b5 03       		.uleb128 0x3
+ 615 00b6 0E       		.uleb128 0xe
+ 616 00b7 3A       		.uleb128 0x3a
+ 617 00b8 0B       		.uleb128 0xb
+ 618 00b9 3B       		.uleb128 0x3b
+ 619 00ba 0B       		.uleb128 0xb
+ 620 00bb 00       		.byte	0
+ 621 00bc 00       		.byte	0
+ 622 00bd 00       		.byte	0
+ 623              		.section	.debug_loc,"",%progbits
+ 624              	.Ldebug_loc0:
+ 625              	.LLST0:
+ 626 0000 00000000 		.4byte	.LVL0
+ 627 0004 11000000 		.4byte	.LVL1-1
+ 628 0008 0100     		.2byte	0x1
+ 629 000a 50       		.byte	0x50
+ 630 000b 11000000 		.4byte	.LVL1-1
+ 631 000f 3E000000 		.4byte	.LVL8
+ 632 0013 0400     		.2byte	0x4
+ 633 0015 F3       		.byte	0xf3
+ 634 0016 01       		.uleb128 0x1
+ 635 0017 50       		.byte	0x50
+ 636 0018 9F       		.byte	0x9f
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 13
+
+
+ 637 0019 3E000000 		.4byte	.LVL8
+ 638 001d 48000000 		.4byte	.LVL9
+ 639 0021 0100     		.2byte	0x1
+ 640 0023 50       		.byte	0x50
+ 641 0024 48000000 		.4byte	.LVL9
+ 642 0028 74000000 		.4byte	.LVL16
+ 643 002c 0400     		.2byte	0x4
+ 644 002e F3       		.byte	0xf3
+ 645 002f 01       		.uleb128 0x1
+ 646 0030 50       		.byte	0x50
+ 647 0031 9F       		.byte	0x9f
+ 648 0032 74000000 		.4byte	.LVL16
+ 649 0036 76000000 		.4byte	.LVL17
+ 650 003a 0100     		.2byte	0x1
+ 651 003c 50       		.byte	0x50
+ 652 003d 76000000 		.4byte	.LVL17
+ 653 0041 84000000 		.4byte	.LFE64
+ 654 0045 0400     		.2byte	0x4
+ 655 0047 F3       		.byte	0xf3
+ 656 0048 01       		.uleb128 0x1
+ 657 0049 50       		.byte	0x50
+ 658 004a 9F       		.byte	0x9f
+ 659 004b 00000000 		.4byte	0
+ 660 004f 00000000 		.4byte	0
+ 661              		.section	.debug_aranges,"",%progbits
+ 662 0000 1C000000 		.4byte	0x1c
+ 663 0004 0200     		.2byte	0x2
+ 664 0006 00000000 		.4byte	.Ldebug_info0
+ 665 000a 04       		.byte	0x4
+ 666 000b 00       		.byte	0
+ 667 000c 0000     		.2byte	0
+ 668 000e 0000     		.2byte	0
+ 669 0010 00000000 		.4byte	.LFB64
+ 670 0014 84000000 		.4byte	.LFE64-.LFB64
+ 671 0018 00000000 		.4byte	0
+ 672 001c 00000000 		.4byte	0
+ 673              		.section	.debug_ranges,"",%progbits
+ 674              	.Ldebug_ranges0:
+ 675 0000 00000000 		.4byte	.LFB64
+ 676 0004 84000000 		.4byte	.LFE64
+ 677 0008 00000000 		.4byte	0
+ 678 000c 00000000 		.4byte	0
+ 679              		.section	.debug_line,"",%progbits
+ 680              	.Ldebug_line0:
+ 681 0000 C4010000 		.section	.debug_str,"MS",%progbits,1
+ 681      02009B01 
+ 681      00000201 
+ 681      FB0E0D00 
+ 681      01010101 
+ 682              	.LASF6:
+ 683 0000 6C6F6E67 		.ascii	"long long int\000"
+ 683      206C6F6E 
+ 683      6720696E 
+ 683      7400
+ 684              	.LASF23:
+ 685 000e 42617474 		.ascii	"Battery_interlock_Write\000"
+ 685      6572795F 
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 14
+
+
+ 685      696E7465 
+ 685      726C6F63 
+ 685      6B5F5772 
+ 686              	.LASF8:
+ 687 0026 756E7369 		.ascii	"unsigned int\000"
+ 687      676E6564 
+ 687      20696E74 
+ 687      00
+ 688              	.LASF16:
+ 689 0033 4E6F745F 		.ascii	"Not_runing\000"
+ 689      72756E69 
+ 689      6E6700
+ 690              	.LASF28:
+ 691 003e 77686963 		.ascii	"which_cycle\000"
+ 691      685F6379 
+ 691      636C6500 
+ 692              	.LASF24:
+ 693 004a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 693      43313120 
+ 693      352E342E 
+ 693      31203230 
+ 693      31363036 
+ 694 007d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 694      20726576 
+ 694      6973696F 
+ 694      6E203233 
+ 694      37373135 
+ 695 00b0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 695      66756E63 
+ 695      74696F6E 
+ 695      2D736563 
+ 695      74696F6E 
+ 696              	.LASF22:
+ 697 00d8 43794465 		.ascii	"CyDelay\000"
+ 697      6C617900 
+ 698              	.LASF5:
+ 699 00e0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 699      20756E73 
+ 699      69676E65 
+ 699      6420696E 
+ 699      7400
+ 700              	.LASF7:
+ 701 00f2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 701      206C6F6E 
+ 701      6720756E 
+ 701      7369676E 
+ 701      65642069 
+ 702              	.LASF17:
+ 703 0109 6379636C 		.ascii	"cycles\000"
+ 703      657300
+ 704              	.LASF3:
+ 705 0110 73686F72 		.ascii	"short unsigned int\000"
+ 705      7420756E 
+ 705      7369676E 
+ 705      65642069 
+ 705      6E7400
+ 706              	.LASF20:
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 15
+
+
+ 707 0123 476C6F77 		.ascii	"Glow_Plug_pin_Write\000"
+ 707      5F506C75 
+ 707      675F7069 
+ 707      6E5F5772 
+ 707      69746500 
+ 708              	.LASF1:
+ 709 0137 756E7369 		.ascii	"unsigned char\000"
+ 709      676E6564 
+ 709      20636861 
+ 709      7200
+ 710              	.LASF25:
+ 711 0145 676C6F77 		.ascii	"glowplugcontroller.c\000"
+ 711      706C7567 
+ 711      636F6E74 
+ 711      726F6C6C 
+ 711      65722E63 
+ 712              	.LASF13:
+ 713 015a 63686172 		.ascii	"char\000"
+ 713      00
+ 714              	.LASF4:
+ 715 015f 6C6F6E67 		.ascii	"long int\000"
+ 715      20696E74 
+ 715      00
+ 716              	.LASF27:
+ 717 0168 476C6F77 		.ascii	"Glowglowplugs\000"
+ 717      676C6F77 
+ 717      706C7567 
+ 717      7300
+ 718              	.LASF26:
+ 719 0176 433A5C55 		.ascii	"C:\\Users\\Joshua\\Documents\\PSoC Creator\\Workspa"
+ 719      73657273 
+ 719      5C4A6F73 
+ 719      6875615C 
+ 719      446F6375 
+ 720 01a4 63653031 		.ascii	"ce01\\Design01.cydsn\000"
+ 720      5C446573 
+ 720      69676E30 
+ 720      312E6379 
+ 720      64736E00 
+ 721              	.LASF21:
+ 722 01b8 476C6F77 		.ascii	"Glow_plug_indicator_Write\000"
+ 722      5F706C75 
+ 722      675F696E 
+ 722      64696361 
+ 722      746F725F 
+ 723              	.LASF12:
+ 724 01d2 646F7562 		.ascii	"double\000"
+ 724      6C6500
+ 725              	.LASF19:
+ 726 01d9 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 726      52784275 
+ 726      66666572 
+ 726      00
+ 727              	.LASF0:
+ 728 01e6 7369676E 		.ascii	"signed char\000"
+ 728      65642063 
+ 728      68617200 
+ARM GAS  C:\Users\Joshua\AppData\Local\Temp\cclu547U.s 			page 16
+
+
+ 729              	.LASF14:
+ 730 01f2 6C6F6E67 		.ascii	"long double\000"
+ 730      20646F75 
+ 730      626C6500 
+ 731              	.LASF9:
+ 732 01fe 5F5F696E 		.ascii	"__int32_t\000"
+ 732      7433325F 
+ 732      7400
+ 733              	.LASF11:
+ 734 0208 666C6F61 		.ascii	"float\000"
+ 734      7400
+ 735              	.LASF18:
+ 736 020e 52504D5F 		.ascii	"RPM_Count\000"
+ 736      436F756E 
+ 736      7400
+ 737              	.LASF2:
+ 738 0218 73686F72 		.ascii	"short int\000"
+ 738      7420696E 
+ 738      7400
+ 739              	.LASF10:
+ 740 0222 696E7433 		.ascii	"int32_t\000"
+ 740      325F7400 
+ 741              	.LASF15:
+ 742 022a 73697A65 		.ascii	"sizetype\000"
+ 742      74797065 
+ 742      00
+ 743              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
